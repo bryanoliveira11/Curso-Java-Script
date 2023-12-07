@@ -35,11 +35,3 @@ class ValidateCpf {
         return digit > 9 ? '0' : String(digit);
     }
 }
-
-// invalid
-const cpf1 = new ValidateCpf('11111111111');
-console.log(cpf1.is_valid());
-
-// valid
-const cpf2 = new ValidateCpf('070.987.720-03');
-console.log(cpf2.is_valid());
