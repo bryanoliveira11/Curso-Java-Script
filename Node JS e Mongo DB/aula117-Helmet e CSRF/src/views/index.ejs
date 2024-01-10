@@ -1,0 +1,28 @@
+<%- include('includes/head'); %>
+
+<section class="container">
+  <h1>
+    <!-- <%= title %> </br> -->
+    <!-- if example -->
+    <% if(typeof title !== 'undefined') { %>
+    <%= title %>
+    <% } else { %>
+    title is undefined
+    <% } %>
+    </br>
+
+    <!-- for example -->
+    <% numbers.forEach(num => { %>
+    <%= num %>
+    <% }); %>
+  </h1>
+
+  <form action="/" method="POST">
+    <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+    <label>User</label>
+    <input type="text" name="user" id="">
+    <button>Send</button>
+  </form>
+</section>
+
+<%- include('includes/footer'); %>
