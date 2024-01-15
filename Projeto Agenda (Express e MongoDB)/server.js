@@ -29,7 +29,7 @@ const helmet = require('helmet');
 const csrf = require('csurf');
 
 // middleware
-const { middlewareGlobal, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
+const { flashMessages, checkCsrfError, csrfMiddleware } = require('./src/middlewares/middleware');
 
 app.use(helmet());
 app.use(express.urlencoded({ extended: true }));
@@ -53,8 +53,8 @@ app.set('view engine', 'ejs');
 
 app.use(csrf());
 
-// setting a default middleware
-app.use(middlewareGlobal);
+// middleware to get flash messages
+app.use(flashMessages);
 
 // csrf middlewares
 app.use(checkCsrfError);

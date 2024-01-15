@@ -1,7 +1,9 @@
 // middleware example
 
-exports.middlewareGlobal = (req, res, next) => {
-    res.locals.localVar = 'Local Var Test';
+exports.flashMessages = (req, res, next) => {
+    res.locals.errors = req.flash('errors');
+    res.locals.success = req.flash('success');
+    res.locals.user = req.session.user;
     next();
 };
 
