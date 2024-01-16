@@ -1,0 +1,55 @@
+<%- include('includes/head'); %>
+<%- include('includes/nav'); %>
+
+<div class="container" style="max-width: 64rem; margin: 3rem auto;">
+  <div class="row">
+    <div class="col-lg-2"></div>
+
+    <div class="col-lg-8 text-center">
+      <% if (!contact._id) { %>
+        <h1>Cadastrar Contato</h1>
+        <p class="text-center lead">Cadastre um novo Contato abaixo.</p>
+      <% } else { %>
+      <h1>Editar Contato</h1>
+      <p class="text-center lead">Edite seu Contato abaixo.</p>
+      <% } %>
+
+      <%- include('includes/messages'); %>
+
+      <div class="row my-5">
+        <div class="col-lg" style="text-align: left;">
+          <% if (!contact._id) { %>
+          Cadastro de Contato
+          <form action="/contato/register" method="POST">
+          <% } else { %>
+          Editando Contato "<%= contact.firstname %>"
+          <form action="/contato/edit/<%= contact._id %>" method="POST">
+          <% } %>
+            <input type="hidden" name="_csrf" value="<%= csrfToken %>">
+            <div class="form-group my-3">
+              <label>Nome</label>
+              <input value="<%= contact.firstname %>" type="text" class="form-control" name="firstname">
+            </div>
+            <div class="form-group">
+                <label>Sobrenome</label>
+                <input value="<%= contact.lastname %>" type="text" class="form-control" name="lastname">
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input value="<%= contact.email %>" type="email" class="form-control" name="email">
+            </div>
+            <div class="form-group">
+              <label>Telefone</label>
+              <input value="<%= contact.phone %>" type="tel" class="form-control" name="phone">
+            </div>
+            <button type="submit" class="btn btn-primary my-3">Salvar</button>
+          </form>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</div>
+</div>
+
+<%- include('includes/footer'); %>
