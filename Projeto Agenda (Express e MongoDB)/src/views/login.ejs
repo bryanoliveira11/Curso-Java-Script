@@ -16,7 +16,7 @@
         <div class="col-lg">
           Faça seu Cadastro
           <p><small>Criar uma Nova Conta.</small></p>
-          <form action="/login/register" method="POST">
+          <form class="form-register" action="/login/register" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <div class="form-group" style="text-align: left;">
               <label>Seu Email</label>
@@ -33,7 +33,7 @@
         <div class="col-lg">
           Faça o Login
           <p><small>Já tenho uma Conta.</small></p>
-          <form action="/login/login" method="POST">
+          <form class="form-login" action="/login/login" method="POST">
             <input type="hidden" name="_csrf" value="<%= csrfToken %>">
             <div class="form-group" style="text-align: left;">
               <label>Seu Email</label>

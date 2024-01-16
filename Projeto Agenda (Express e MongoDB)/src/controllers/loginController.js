@@ -53,5 +53,5 @@ exports.login = async (req, res) => {
 
 exports.logout = (req, res) => {
     req.session.destroy();
-    return res.redirect('index');
+    return res.redirect('/');
 }
