@@ -10,9 +10,9 @@ const ContatoSchema = new mongoose.Schema({
     createAt: { type: Date, default: Date.now }
 });
 
-const ContatoModel = mongoose.model('Contato', ContatoSchema);
+const ContactModel = mongoose.model('Contato', ContatoSchema);
 
-class Contato {
+class Contact {
     constructor(body) {
         this.body = body;
         this.errors = [];
@@ -21,7 +21,13 @@ class Contato {
 
     async searchById(id) {
         if (typeof id !== 'string') return;
-        const contact = await ContatoModel.findById(id);
+        const contact = await ContactModel.findById(id);
+        return contact;
+    }
+
+    async delete(id) {
+        if (typeof id !== 'string') return;
+        const contact = await ContactModel.findByIdAndDelete(id);
         return contact;
     }
 
@@ -35,14 +41,14 @@ class Contato {
         if (this.errors.length > 0) return;
 
         // creating contact
-        this.contact = await ContatoModel.create(this.body);
+        this.contact = await ContactModel.create(this.body);
     }
 
     async edit(id) {
         if (typeof id !== 'string') return;
         this.validate();
 
-        const email_in_use = await ContatoModel.findOne(
+        const email_in_use = await ContactModel.findOne(
             { email: this.body.email, _id: { $ne: id }}
         );
 
@@ -51,7 +57,7 @@ class Contato {
         if (this.errors.length > 0) return;
 
         // update contact
-        this.contact = await ContatoModel.findByIdAndUpdate(id, this.body, { new: true });
+        this.contact = await ContactModel.findByIdAndUpdate(id, this.body, { new: true });
     }
 
     validate() {
@@ -75,7 +81,7 @@ class Contato {
     }
 
     async contactExists() {
-        this.contact = await ContatoModel.findOne({ email: this.body.email });
+        this.contact = await ContactModel.findOne({ email: this.body.email });
         if (this.contact) this.errors.push('Contato já Cadastrado !');
     }
 
@@ -95,4 +101,4 @@ class Contato {
     }
 }
 
-module.exports = Contato;
+module.exports = {Contact, ContactModel}

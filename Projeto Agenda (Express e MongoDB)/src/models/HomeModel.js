@@ -1,4 +1,5 @@
 const mongoose = require('mongoose');
+const ContactModel = require('./ContatoModel');
 
 // creating a mongoose schema
 const HomeSchema = new mongoose.Schema({
@@ -8,4 +9,11 @@ const HomeSchema = new mongoose.Schema({
 
 const HomeModel = mongoose.model('Home', HomeSchema);
 
-module.exports = HomeModel;
+class Home{
+    async getAllContacts() {
+        const contacts = await ContactModel.ContactModel.find().sort({createdAt: -1});
+        return contacts;
+    }
+}
+
+module.exports = Home;

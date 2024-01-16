@@ -1,4 +1,4 @@
-const Contact = require('../models/ContatoModel');
+const ContactModel = require('../models/ContatoModel');
 
 exports.index = (req, res) => {
     res.render('contato', {
@@ -8,7 +8,7 @@ exports.index = (req, res) => {
 
 exports.register = async (req, res) => {
     try {
-        const contact = new Contact(req.body);
+        const contact = new ContactModel.Contact(req.body);
         await contact.register();
 
         if (contact.errors.length > 0) {
@@ -25,6 +25,7 @@ exports.register = async (req, res) => {
         });
     }
     catch (err) {
+        console.log(err)
         return res.render('404');
     }
 };
@@ -32,7 +33,7 @@ exports.register = async (req, res) => {
 exports.editIndex = async (req, res) => {
     try {
         if (!req.params.id) return res.render('404');
-        const contact = new Contact(req.body);
+        const contact = new ContactModel.Contact(req.body);
         const contact_to_edit = await contact.searchById(req.params.id);
     
         if (!contact_to_edit) {
@@ -51,7 +52,7 @@ exports.editIndex = async (req, res) => {
 exports.edit = async (req, res) => {
     try {
         if (!req.params.id) return res.render('404');
-        const contact = new Contact(req.body);
+        const contact = new ContactModel.Contact(req.body);
         await contact.edit(req.params.id);
 
         let contact_id = await contact.searchById(req.params.id);
@@ -74,3 +75,23 @@ exports.edit = async (req, res) => {
         return res.render('404'); 
     }
 }
+
+exports.delete = async (req, res) => {
+    try {
+        if (!req.params.id) return res.render('404');
+        const contact = new ContactModel.Contact(req.body);
+        const contact_to_delete = await contact.delete(req.params.id);
+    
+        if (!contact_to_delete) {
+            return res.render('404');
+        }
+
+        req.flash('success', 'Contato Deletado com Sucesso.');
+        req.session.save(function () {
+            return res.redirect(`back`); 
+        });
+    }
+    catch(err) {
+        return res.render('404');
+    }
+};
