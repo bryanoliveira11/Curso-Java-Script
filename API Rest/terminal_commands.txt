@@ -1,0 +1,13 @@
+// Setting up docker for mariadb
+
+docker run --restart always -d --name dbmariadb1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=YOUR_PASSWORD_HERE mariadb
+
+
+// creating a migration with sequelize
+
+npx sequelize migration:create --name=NAME
+
+
+// doing a migration with sequelize
+
+npx sequelize db:migrate

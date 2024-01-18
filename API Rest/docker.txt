@@ -1,3 +1,0 @@
-// Setting up docker for mariadb
-
-docker run --restart always -d --name dbmariadb1 -p 3306:3306 -e MYSQL_ROOT_PASSWORD=YOUR_PASSWORD_HERE mariadb
