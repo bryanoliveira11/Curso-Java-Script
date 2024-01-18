@@ -91,4 +91,5 @@ lerna-debug.log
 Thumbs.db
 
 # my
+.vscode
 mongodb-passwords.txt
