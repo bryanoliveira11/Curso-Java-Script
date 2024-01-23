@@ -4,7 +4,7 @@ class HomeController {
   async index(req, res) {
     const newStudent = await Student.create(req.body);
 
-    res.json(newStudent);
+    return res.json(newStudent);
   }
 }
 
