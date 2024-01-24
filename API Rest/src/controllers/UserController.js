@@ -5,7 +5,9 @@ class UserController {
   async create(req, res) {
     try {
       const newUser = await User.create(req.body);
-      return res.json(newUser);
+      const { id, name, email } = newUser
+
+      return res.json({ id, name, email });
     }
     catch (err) {
       return res.status(400).json(
@@ -20,7 +22,7 @@ class UserController {
   // listando usuários
   async index(req, res) {
     try {
-      const users = await User.findAll();
+      const users = await User.findAll({ attributes: ['id', 'name', 'email'] });
       return res.json(users);
     }
     catch (err) {
@@ -32,7 +34,9 @@ class UserController {
   async show(req, res) {
     try {
       const user = await User.findByPk(req.params.id);
-      return res.json(user);
+      const { id, name, email } = user
+
+      return res.json({ id, name, email });
     }
     catch (err) {
       return res.json(null);
@@ -42,19 +46,17 @@ class UserController {
   // update
   async update(req, res) {
     try {
-      if (!req.params.id) return res.status(400).json({
-        errors: ['ID não Enviado.'],
-      });
-
-      const user = await User.findByPk(req.params.id);
+      // update agora usará o id do usuário logado para editar
+      const user = await User.findByPk(req.userId);
 
       if (!user) return res.status(400).json({
         errors: ['Usuário não Existe.'],
       });
 
       const newData = await user.update(req.body);
+      const { id, name, email } = newData
 
-      return res.json(newData);
+      return res.json({ id, name, email });
     }
     catch (err) {
       return res.status(400).json(
@@ -68,11 +70,7 @@ class UserController {
   // delete
   async delete(req, res) {
     try {
-      if (!req.params.id) return res.status(400).json({
-        errors: ['ID não Enviado.'],
-      });
-
-      const user = await User.findByPk(req.params.id);
+      const user = await User.findByPk(req.userId);
 
       if (!user) return res.status(400).json({
         errors: ['Usuário não Existe.'],
