@@ -11,3 +11,8 @@ npx sequelize migration:create --name=NAME
 // doing a migration with sequelize
 
 npx sequelize db:migrate
+
+
+// creating seeds with sequelize
+
+npx sequelize seed:generate --name NAME
