@@ -1,10 +1,18 @@
 import Student from '../models/Student';
+import Photo from '../models/Photo';
 
 class StudentController {
   async index(req, res) {
     try {
-      const students = await Student.findAll();
-      return res.json(students)
+      const students = await Student.findAll({
+        attributes: ['id', 'name', 'lastname', 'email', 'age', 'height', 'weight'],
+        order: [['id', 'DESC'], [Photo, 'id', 'DESC']],
+        include: {
+          model: Photo,
+          attributes: ['filename'],
+        },
+      });
+      return res.json(students);
     }
     catch (err) {
       return res.json(null);
@@ -29,21 +37,27 @@ class StudentController {
     try {
       if (!req.params.id) {
         return res.status(404).json({
-          errors: ['ID Inválido.']
+          errors: ['ID Inválido.'],
         })
       };
 
-      const student = await Student.findByPk(req.params.id);
+      const student = await Student.findOne({
+        where: {id: req.params.id},
+        attributes: ['id', 'name', 'lastname', 'email', 'age', 'height', 'weight'],
+        order: [[Photo, 'id', 'DESC']],
+        include: {
+          model: Photo,
+          attributes: ['filename'],
+        },
+      });
 
       if (!student) {
         return res.status(404).json({
-          errors: ['Aluno não Existe.']
+          errors: ['Aluno não Existe.'],
         })
       };
 
-      const { id, name, lastname, email, age, height, weight } = student
-
-      return res.json({ id, name, lastname, email, age, height, weight });
+      return res.json(student);
     }
     catch (err) {
       return res.status(400).json({
