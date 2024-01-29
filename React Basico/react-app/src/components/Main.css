@@ -37,3 +37,43 @@
   align-items: center;
   justify-content: center;
 }
+
+.tasks {
+  margin-top: 30px;
+}
+
+.tasks li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 10px;
+  transition: all 200ms ease-in-out;
+}
+
+.tasks li span {
+  display: flex;
+  align-items: center;
+}
+
+.tasks li:hover {
+  background: #51c5de;
+}
+
+.tasks li .edit, .tasks li .delete {
+  transition: all 200ms ease-in-out;
+  cursor: pointer;
+}
+
+
+.tasks li .edit {
+  margin-right: 15px;
+  color: #51c5de;
+}
+
+.tasks li .delete {
+  color: #f04c64;
+}
+
+.tasks li:hover .edit, .tasks li:hover .delete {
+  color: #2c2c2c;
+}

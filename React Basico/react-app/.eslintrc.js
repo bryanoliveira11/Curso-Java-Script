@@ -24,5 +24,7 @@ module.exports = {
   rules: {
     'react/jsx-filename-extension': 0,
     'react/state-in-constructor': 0,
+    'class-methods-use-this': 0,
+    'no-extraneous-dependencies': 0,
   },
 };
