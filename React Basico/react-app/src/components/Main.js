@@ -9,6 +9,26 @@ export default class Main extends Component {
     index: -1,
   };
 
+  // getting tasks from local storage after the page is loaded
+  componentDidMount() {
+    const tasks = JSON.parse(localStorage.getItem('tasks'));
+
+    if (!tasks) return;
+
+    this.setState({
+      tasks,
+    });
+  }
+
+  // saving tasks in local storage everty time the state is updated
+  componentDidUpdate(prevProps, prevState) {
+    const { tasks } = this.state;
+
+    if (tasks === prevState.tasks) return;
+
+    localStorage.setItem('tasks', JSON.stringify(tasks));
+  }
+
   handleChange = (e) => {
     this.setState({
       newTask: e.target.value,
