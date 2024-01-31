@@ -26,6 +26,7 @@ module.exports = {
   rules: {
     'prettier/prettier': 'error',
     'import/no-extraneous-dependencies': 0,
+    'react/jsx-props-no-spreading': 0,
     'react/jsx-filename-extension': 0,
     'import/prefer-default-export': 0,
     'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
