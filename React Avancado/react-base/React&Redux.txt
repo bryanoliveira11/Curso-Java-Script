@@ -1,5 +1,14 @@
+Redux
+
 -> Estado inicial: {
   usuario_logado: false -> true
 }
 
 -> ação -> reducer -> newState = state -> newState
+
+
+Redux Saga
+
+// redux saga age como um middleware para os reducers, retornando sucesso ou falha
+
+ação (request) -> Saga -> Reducer -> success or fail
