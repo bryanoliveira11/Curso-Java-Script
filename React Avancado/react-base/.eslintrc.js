@@ -29,6 +29,7 @@ module.exports = {
     'react/jsx-props-no-spreading': 0,
     'react/jsx-filename-extension': 0,
     'import/prefer-default-export': 0,
+    'default-param-last': 0,
     'react-hooks/rules-of-hooks': 'error', // Checks rules of Hooks
     'react-hooks/exhaustive-deps': 'warn' // Checks effect dependencies
   },

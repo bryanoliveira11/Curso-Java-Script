@@ -1,0 +1,5 @@
+-> Estado inicial: {
+  usuario_logado: false -> true
+}
+
+-> ação -> reducer -> newState = state -> newState
