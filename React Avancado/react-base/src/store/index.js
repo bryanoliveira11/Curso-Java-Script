@@ -1,24 +1,6 @@
 import { configureStore } from '@reduxjs/toolkit';
+import rootReducer from './modules/rootReducer';
 
-const initialState = {
-  btnClicked: false,
-};
-
-// reducer will listen to actions in the app
-const reducer = (state = initialState, action) => {
-  switch (action.type) {
-    case 'BTN_CLICKED': {
-      const newState = { ...state };
-      newState.btnClicked = !newState.btnClicked;
-      return newState;
-    }
-
-    default: {
-      return state;
-    }
-  }
-};
-
-const store = configureStore({ reducer });
+const store = configureStore({ reducer: rootReducer });
 
 export default store;
