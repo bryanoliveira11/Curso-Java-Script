@@ -17,7 +17,7 @@ export default function Register() {
     e.preventDefault();
     let formErrors = false;
 
-    if (name && (name.length < 3 || name.length > 255)) {
+    if (name.length < 3 || name.length > 255) {
       formErrors = true;
       toast.error('Field Name Must Have Between 3 and 255 Characters.');
     }
@@ -27,7 +27,7 @@ export default function Register() {
       toast.error('Email must be Valid.');
     }
 
-    if (password && (password.length < 6 || password.length > 50)) {
+    if (password.length < 6 || password.length > 50) {
       formErrors = true;
       toast.error('Field Password Must Have Between 6 and 50 Characters.');
     }
@@ -63,7 +63,7 @@ export default function Register() {
         </label>
 
         <label htmlFor="email">
-          Email
+          E-mail
           <input
             type="email"
             placeholder="Your Email"
@@ -84,7 +84,7 @@ export default function Register() {
 
         <button type="submit">
           <FaCheck size={18} className="fa-check" />
-          Enviar
+          Register
         </button>
       </Form>
     </Container>

@@ -11,7 +11,8 @@ import studentRoutes from './src/routes/studentRoutes';
 import photoRoutes from './src/routes/photoRoutes';
 
 const whitelist = [
-  'http://127.0.0.1:3000'
+  'http://127.0.0.1:3000',
+  'http://localhost:3000'
 ];
 
 const corsOptions = {
