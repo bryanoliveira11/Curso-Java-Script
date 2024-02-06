@@ -28,6 +28,7 @@ module.exports = {
     'import/no-extraneous-dependencies': 0,
     'react/jsx-props-no-spreading': 0,
     'react/jsx-filename-extension': 0,
+    'react/jsx-no-bind': 0,
     'import/prefer-default-export': 0,
     'default-param-last': 0,
     'no-console': 0,

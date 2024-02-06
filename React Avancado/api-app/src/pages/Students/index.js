@@ -14,7 +14,7 @@ export default function Students() {
 
   React.useEffect(() => {
     async function getStudents() {
-      const response = await axios.get('/students');
+      const response = await axios.get('/students/');
       setStudents(response.data);
     }
     getStudents();
@@ -38,10 +38,10 @@ export default function Students() {
             <span> {student.email} </span>
 
             <Link to={`/student/${student.id}/edit`}>
-              <FaEdit size={16} title="Editar" />
+              <FaEdit size={16} title="Edit Student" />
             </Link>
             <Link to={`/student/${student.id}/delete`}>
-              <FaWindowClose size={16} title="Excluir" />
+              <FaWindowClose size={16} title="Delete Student" />
             </Link>
           </div>
         ))}
