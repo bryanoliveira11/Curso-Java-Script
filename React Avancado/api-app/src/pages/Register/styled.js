@@ -34,3 +34,13 @@ export const Form = styled.form`
     margin-right: 5px;
   }
 `;
+
+export const LoginLink = styled.p`
+  font-size: 15px;
+  margin-top: 5px;
+  padding: 3px;
+
+  .redirect-link {
+    margin-left: 5px;
+  }
+`;

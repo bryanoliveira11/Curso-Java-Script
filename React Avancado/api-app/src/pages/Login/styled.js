@@ -34,3 +34,13 @@ export const Form = styled.form`
     margin-right: 5px;
   }
 `;
+
+export const RegisterLink = styled.p`
+  font-size: 15px;
+  margin-top: 5px;
+  padding: 2px;
+
+  .redirect-link {
+    margin-left: 5px;
+  }
+`;

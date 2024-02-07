@@ -9,8 +9,15 @@ const initialState = {
 
 export default function loginReducer(state = initialState, action) {
   switch (action.type) {
+    case types.LOGIN_REQUEST: {
+      const newState = { ...state };
+      newState.isLoading = true;
+      return newState;
+    }
+
     case types.LOGIN_SUCCESS: {
       const newState = { ...state };
+      newState.isLoading = false;
       newState.isLoggedIn = true;
       newState.token = action.payload.token;
       newState.user = action.payload.user;

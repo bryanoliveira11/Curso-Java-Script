@@ -3,15 +3,18 @@ import { FaCheck } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
 import { get } from 'lodash';
+import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { Container } from '../../styles/GlobalStyles';
-import { Form } from './styled';
+import { Form, LoginLink } from './styled';
 import axios from '../../services/axios';
 import history from '../../services/history';
+import Loading from '../../components/Loading';
 
 export default function Register() {
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
+  const [isLoading, setIsLoading] = React.useState(false);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -34,6 +37,8 @@ export default function Register() {
 
     if (formErrors) return;
 
+    setIsLoading(true);
+
     try {
       await axios.post('/users/', {
         name,
@@ -41,16 +46,25 @@ export default function Register() {
         password,
       });
       toast.success('User Created Successfully.');
+      setIsLoading(false);
       history.push('/login');
     } catch (err) {
       const errors = get(err, 'response.data.errors', []);
       errors.map((error) => toast.error(error));
+      setIsLoading(false);
     }
   }
 
   return (
     <Container>
+      <Loading isLoading={isLoading} />
       <h1> Create Your Account </h1>
+      <LoginLink>
+        Already have an Account ?
+        <Link to="/login/" className="redirect-link">
+          Login.
+        </Link>
+      </LoginLink>
       <Form onSubmit={handleSubmit}>
         <label htmlFor="name">
           Name
