@@ -34,7 +34,51 @@ function persistRehydrate({ payload }) {
   axios.defaults.headers.Authorization = `Bearer ${token}`;
 }
 
-export default all(
-  [takeLatest(types.LOGIN_REQUEST, loginRequest)],
-  [takeLatest(types.PERSIST_REHYDRATE, persistRehydrate)]
-);
+function* registerRequest({ payload }) {
+  const { id, name, email, password } = payload;
+
+  try {
+    // logged user will be edited
+    if (id) {
+      yield call(axios.put, '/users/', {
+        email,
+        name,
+        password: password || undefined,
+      });
+      toast.success('Data Edited Successfully.');
+      yield put(actions.registerUpdatedSuccess({ name, email, password }));
+    } else {
+      // new user will be created
+      yield call(axios.post, '/users', {
+        email,
+        name,
+        password,
+      });
+      toast.success('Account Created Successfully.');
+      yield put(actions.registerCreatedSuccess({ name, email, password }));
+      history.push('/login');
+    }
+  } catch (err) {
+    const errors = get(err, 'response.data.errors', []);
+    const status = get(err, 'response.status', 0);
+
+    if (status === 401) {
+      toast.info('E-mail Edited, Please Login Again.');
+      yield put(actions.loginFailure());
+      history.push('/login');
+    }
+
+    if (errors.length > 0) {
+      errors.map((error) => toast.error(error));
+    } else {
+      toast.error('An Error Ocurred.');
+      yield put(actions.registerFailure());
+    }
+  }
+}
+
+export default all([
+  takeLatest(types.LOGIN_REQUEST, loginRequest),
+  takeLatest(types.PERSIST_REHYDRATE, persistRehydrate),
+  takeLatest(types.REGISTER_REQUEST, registerRequest),
+]);

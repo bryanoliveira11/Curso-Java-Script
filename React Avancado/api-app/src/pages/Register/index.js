@@ -2,19 +2,33 @@ import React from 'react';
 import { FaCheck } from 'react-icons/fa';
 import { toast } from 'react-toastify';
 import { isEmail } from 'validator';
-import { get } from 'lodash';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
+import { useSelector, useDispatch } from 'react-redux';
 import { Container } from '../../styles/GlobalStyles';
 import { Form, LoginLink } from './styled';
-import axios from '../../services/axios';
-import history from '../../services/history';
 import Loading from '../../components/Loading';
+import * as actions from '../../store/modules/auth/actions';
 
 export default function Register() {
+  const dispatch = useDispatch();
+
+  // user data comes from state.auth
+  const id = useSelector((state) => state.auth.user.id);
+  const nameStored = useSelector((state) => state.auth.user.name);
+  const emailStored = useSelector((state) => state.auth.user.email);
+
+  const isLoading = useSelector((state) => state.auth.isLoading);
+
   const [name, setName] = React.useState('');
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
-  const [isLoading, setIsLoading] = React.useState(false);
+
+  // getting user data if user is logged and setting in the fields
+  React.useEffect(() => {
+    if (!id) return;
+    setName(nameStored);
+    setEmail(emailStored);
+  }, [id, nameStored, emailStored]);
 
   async function handleSubmit(e) {
     e.preventDefault();
@@ -37,34 +51,23 @@ export default function Register() {
 
     if (formErrors) return;
 
-    setIsLoading(true);
-
-    try {
-      await axios.post('/users/', {
-        name,
-        email,
-        password,
-      });
-      toast.success('User Created Successfully.');
-      setIsLoading(false);
-      history.push('/login');
-    } catch (err) {
-      const errors = get(err, 'response.data.errors', []);
-      errors.map((error) => toast.error(error));
-      setIsLoading(false);
-    }
+    dispatch(actions.registerRequest({ id, name, email, password }));
   }
 
   return (
     <Container>
       <Loading isLoading={isLoading} />
-      <h1> Create Your Account </h1>
-      <LoginLink>
-        Already have an Account ?
-        <Link to="/login/" className="redirect-link">
-          Login.
-        </Link>
-      </LoginLink>
+      <h1> {id ? 'Edit Your Data' : 'Create Your Account'} </h1>
+      {id ? (
+        ''
+      ) : (
+        <LoginLink>
+          Already have an Account ?
+          <Link to="/login/" className="redirect-link">
+            Login.
+          </Link>
+        </LoginLink>
+      )}
       <Form onSubmit={handleSubmit}>
         <label htmlFor="name">
           Name
@@ -98,7 +101,7 @@ export default function Register() {
 
         <button type="submit">
           <FaCheck size={18} className="fa-check" />
-          Register
+          {id ? 'Edit' : 'Register'}
         </button>
       </Form>
     </Container>
