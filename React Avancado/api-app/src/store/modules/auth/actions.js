@@ -48,3 +48,15 @@ export function registerFailure(payload) {
     payload,
   };
 }
+
+export function logoutRequest() {
+  return {
+    type: types.LOGOUT_REQUEST,
+  };
+}
+
+export function logoutSuccess() {
+  return {
+    type: types.LOGOUT_SUCCESS,
+  };
+}

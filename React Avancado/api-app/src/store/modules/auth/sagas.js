@@ -78,8 +78,15 @@ function* registerRequest({ payload }) {
   }
 }
 
+function* logoutRequest() {
+  toast.success('You are Logged Out.');
+  history.push('/login');
+  yield put(actions.logoutSuccess());
+}
+
 export default all([
   takeLatest(types.LOGIN_REQUEST, loginRequest),
   takeLatest(types.PERSIST_REHYDRATE, persistRehydrate),
   takeLatest(types.REGISTER_REQUEST, registerRequest),
+  takeLatest(types.LOGOUT_REQUEST, logoutRequest),
 ]);

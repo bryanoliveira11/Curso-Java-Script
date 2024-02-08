@@ -19,3 +19,8 @@ export const Nav = styled.nav`
     scale: 1.1;
   }
 `;
+
+export const SmallUserText = styled.small`
+  color: #fff;
+  font-size: 15px;
+`;
