@@ -1,10 +1,10 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { get } from 'lodash';
-import { FaUserCircle, FaEdit, FaWindowClose } from 'react-icons/fa';
+import { FaUserCircle, FaEdit, FaWindowClose, FaPlus } from 'react-icons/fa';
 import axios from '../../services/axios';
 import { Container } from '../../styles/GlobalStyles';
-import { StudentContainer, ProfilePicture } from './styled';
+import { StudentContainer, ProfilePicture, NewStudent } from './styled';
 import Loading from '../../components/Loading';
 
 export default function Students() {
@@ -28,6 +28,10 @@ export default function Students() {
     <Container>
       <Loading isLoading={isLoading} />
       <h1> Students </h1>
+      <NewStudent to="/student" className="new-student">
+        <FaPlus size={12} className="fa-plus" />
+        New Student
+      </NewStudent>
       <StudentContainer>
         {students.map((student) => (
           <div key={String(student.id)}>

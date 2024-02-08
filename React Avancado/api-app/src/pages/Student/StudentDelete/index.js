@@ -2,11 +2,12 @@ import React from 'react';
 import { get } from 'lodash';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { FaUserCircle } from 'react-icons/fa';
 import { Container } from '../../../styles/GlobalStyles';
 import Loading from '../../../components/Loading';
 import axios from '../../../services/axios';
 import history from '../../../services/history';
-import { StudentContainer, ButtonContainer } from './styled';
+import { StudentContainer, ButtonContainer, UserPicture } from './styled';
 
 export default function StudentDelete(props) {
   const lastStudentIdRef = React.useRef(null);
@@ -27,7 +28,6 @@ export default function StudentDelete(props) {
         setIsLoading(false);
         if (studentData.length !== 0) {
           setStudent(studentData.data);
-          console.log(studentData);
         }
       } catch (err) {
         toast.error('Student not Found');
@@ -47,6 +47,7 @@ export default function StudentDelete(props) {
       history.push('/');
       if (!errors) {
         toast.error('Unexpected Error.');
+        return;
       }
       errors.map((error) => toast.error(error));
     }
@@ -56,6 +57,13 @@ export default function StudentDelete(props) {
     <Container>
       <Loading isLoading={isLoading} />
       <h1> Delete Student &quot;{student.name}&quot; ? </h1>
+      <UserPicture>
+        {get(student, 'Photos[0].url', false) ? (
+          <img src={student.Photos[0].url} alt="" />
+        ) : (
+          <FaUserCircle size={60} />
+        )}
+      </UserPicture>
       <StudentContainer>
         <p>&#9679; id : {student.id} </p>
         <p>&#9679; Name : {student.name} </p>

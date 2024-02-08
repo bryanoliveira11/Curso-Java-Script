@@ -3,7 +3,7 @@ import * as colors from '../../../config/colors';
 
 export const StudentContainer = styled.div`
   margin: 0 auto;
-  margin-top: 20px;
+  margin-top: 15px;
   text-align: left;
 
   h1,
@@ -14,7 +14,7 @@ export const StudentContainer = styled.div`
 `;
 
 export const ButtonContainer = styled.div`
-  margin-top: 20px;
+  margin-top: 15px;
   display: flex;
   flex-direction: row;
   align-items: start;
@@ -43,5 +43,15 @@ export const ButtonContainer = styled.div`
 
   .btn-cancel {
     background: ${colors.primaryColor};
+  }
+`;
+
+export const UserPicture = styled.div`
+  margin-top: 15px;
+
+  img {
+    width: 120px;
+    height: 80px;
+    border-radius: 4px;
   }
 `;

@@ -4,7 +4,7 @@ import MyRoute from './MyRoute';
 import Login from '../pages/Login';
 import Page404 from '../pages/Page404';
 import StudentDelete from '../pages/Student/StudentDelete';
-import StudentEdit from '../pages/Student/StudentEdit';
+import Student from '../pages/Student/Student';
 import Students from '../pages/Students';
 import Photos from '../pages/Photos';
 import Register from '../pages/Register';
@@ -12,12 +12,8 @@ import Register from '../pages/Register';
 export default function Routes() {
   return (
     <Switch>
-      <MyRoute
-        exact
-        path="/student/:id/edit"
-        component={StudentEdit}
-        isClosed
-      />
+      <MyRoute exact path="/student/" component={Student} isClosed />
+      <MyRoute exact path="/student/:id/edit" component={Student} isClosed />
       <MyRoute
         exact
         path="/student/:id/delete"
