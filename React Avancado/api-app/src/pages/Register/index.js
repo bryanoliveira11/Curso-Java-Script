@@ -5,7 +5,7 @@ import { isEmail } from 'validator';
 import { Link } from 'react-router-dom/cjs/react-router-dom.min';
 import { useSelector, useDispatch } from 'react-redux';
 import { Container } from '../../styles/GlobalStyles';
-import { Form, LoginLink } from './styled';
+import { Form, LoginLink, SmallText } from './styled';
 import Loading from '../../components/Loading';
 import * as actions from '../../store/modules/auth/actions';
 
@@ -30,7 +30,7 @@ export default function Register() {
     setEmail(emailStored);
   }, [id, nameStored, emailStored]);
 
-  async function handleSubmit(e) {
+  function handleSubmit(e) {
     e.preventDefault();
     let formErrors = false;
 
@@ -44,7 +44,18 @@ export default function Register() {
       toast.error('Email must be Valid.');
     }
 
-    if (password.length < 6 || password.length > 50) {
+    // without id
+    if (!id && (password.length < 6 || password.length > 50)) {
+      formErrors = true;
+      toast.error('Field Password Must Have Between 6 and 50 Characters.');
+    }
+
+    // with id
+    if (
+      id &&
+      password.length !== 0 &&
+      (password.length < 6 || password.length > 50)
+    ) {
       formErrors = true;
       toast.error('Field Password Must Have Between 6 and 50 Characters.');
     }
@@ -91,11 +102,14 @@ export default function Register() {
 
         <label htmlFor="password">
           Password
+          <SmallText>
+            {id ? 'Will be Edited if you Send a Value' : ''}
+          </SmallText>
           <input
             type="password"
             placeholder="Your Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value.trim())}
           />
         </label>
 

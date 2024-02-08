@@ -6,7 +6,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { get } from 'lodash';
 import { Link } from 'react-router-dom';
 import { Container } from '../../styles/GlobalStyles';
-import { Form, RegisterLink } from './styled';
+import { Form, RegisterLink, LogoutLink } from './styled';
 import * as actions from '../../store/modules/auth/actions';
 import Loading from '../../components/Loading';
 
@@ -16,6 +16,7 @@ export default function Login(props) {
   // getting the prev page from props using lodash get
   const prevPath = get(props, 'location.state.prevPath', '/');
   const isLoading = useSelector((state) => state.auth.isLoading);
+  const isLoggedIn = useSelector((state) => state.auth.isLoggedIn);
 
   const [email, setEmail] = React.useState('');
   const [password, setPassword] = React.useState('');
@@ -32,6 +33,17 @@ export default function Login(props) {
     if (formErrors) return;
 
     dispatch(actions.loginRequest({ email, password, prevPath }));
+  }
+
+  if (isLoggedIn) {
+    return (
+      <Container>
+        <h1> You are Already Logged In.</h1>
+        <LogoutLink>
+          Logout by <Link to="/logout/"> Clicking here.</Link>
+        </LogoutLink>
+      </Container>
+    );
   }
 
   return (

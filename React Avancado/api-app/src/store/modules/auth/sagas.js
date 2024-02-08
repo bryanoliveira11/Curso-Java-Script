@@ -70,6 +70,7 @@ function* registerRequest({ payload }) {
 
     if (errors.length > 0) {
       errors.map((error) => toast.error(error));
+      yield put(actions.registerFailure());
     } else {
       toast.error('An Error Ocurred.');
       yield put(actions.registerFailure());

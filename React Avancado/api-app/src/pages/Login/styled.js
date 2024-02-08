@@ -44,3 +44,9 @@ export const RegisterLink = styled.p`
     margin-left: 5px;
   }
 `;
+
+export const LogoutLink = styled.p`
+  font-size: 18px;
+  margin-top: 5px;
+  padding: 2px;
+`;

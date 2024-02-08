@@ -44,3 +44,7 @@ export const LoginLink = styled.p`
     margin-left: 5px;
   }
 `;
+
+export const SmallText = styled.small`
+  margin-top: 3px;
+`;
