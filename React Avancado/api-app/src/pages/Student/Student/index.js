@@ -61,7 +61,7 @@ export default function StudentEdit(props) {
 
     if (lastname.length < 3 || lastname.length > 255) {
       formErrors = true;
-      toast.error('Field Name Must Have Between 3 and 255 Characters.');
+      toast.error('Field Last Name Must Have Between 3 and 255 Characters.');
     }
 
     if (!isEmail(email)) {
