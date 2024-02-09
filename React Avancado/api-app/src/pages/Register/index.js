@@ -34,7 +34,7 @@ export default function Register() {
     e.preventDefault();
     let formErrors = false;
 
-    if (name.length < 3 || name.length > 255) {
+    if (name.trim().length < 3 || name.trim().length > 255) {
       formErrors = true;
       toast.error('Field Name Must Have Between 3 and 255 Characters.');
     }
@@ -86,7 +86,7 @@ export default function Register() {
             type="text"
             placeholder="Your Name"
             value={name}
-            onChange={(e) => setName(e.target.value.trim())}
+            onChange={(e) => setName(e.target.value)}
           />
         </label>
 

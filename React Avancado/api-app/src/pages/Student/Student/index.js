@@ -4,15 +4,18 @@ import { FaCheck } from 'react-icons/fa';
 import { isEmail, isInt, isFloat } from 'validator';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
+import { useDispatch } from 'react-redux';
 import { Container } from '../../../styles/GlobalStyles';
 import { Form, H1, FaArrowBack } from './styled';
 import axios from '../../../services/axios';
 import Loading from '../../../components/Loading';
 import history from '../../../services/history';
+import * as actions from '../../../store/modules/auth/actions';
 
 export default function StudentEdit(props) {
   const lastStudentIdRef = React.useRef(null);
   const studentId = get(props, 'match.params.id', undefined);
+  const dispatch = useDispatch();
 
   // states to set
   const [name, setName] = React.useState('');
@@ -50,16 +53,16 @@ export default function StudentEdit(props) {
     getStudent();
   }, [studentId]);
 
-  function handleSubmit(e) {
+  async function handleSubmit(e) {
     e.preventDefault();
     let formErrors = false;
 
-    if (name.length < 3 || name.length > 255) {
+    if (name.trim().length < 3 || name.trim().length > 255) {
       formErrors = true;
       toast.error('Field Name Must Have Between 3 and 255 Characters.');
     }
 
-    if (lastname.length < 3 || lastname.length > 255) {
+    if (lastname.trim().length < 3 || lastname.trim().length > 255) {
       formErrors = true;
       toast.error('Field Last Name Must Have Between 3 and 255 Characters.');
     }
@@ -86,7 +89,49 @@ export default function StudentEdit(props) {
 
     if (formErrors) return;
 
-    toast.success('ok');
+    try {
+      setIsLoading(true);
+      if (studentId) {
+        // edit
+        await axios.put(`/students/${studentId}`, {
+          name,
+          lastname,
+          email,
+          age,
+          height,
+          weight,
+        });
+        toast.success('Student Edited Successfully.');
+      } else {
+        // create
+        const { data } = await axios.post('/students/', {
+          name,
+          lastname,
+          email,
+          age,
+          height,
+          weight,
+        });
+        toast.success('Student Created Successfully.');
+        history.push(`/student/${data.id}/edit`);
+      }
+      setIsLoading(false);
+    } catch (err) {
+      setIsLoading(false);
+      const status = get(err, 'response.status', 0);
+      const data = get(err, 'response.data', {});
+      const errors = get(data, 'errors', []);
+
+      if (errors.length > 0) {
+        errors.map((error) => toast.error(error));
+      } else {
+        toast.error('Unexpected Error.');
+      }
+
+      if (status === 401) {
+        dispatch(actions.loginFailure());
+      }
+    }
   }
 
   return (
@@ -104,7 +149,7 @@ export default function StudentEdit(props) {
             type="text"
             placeholder="Student Name"
             value={name}
-            onChange={(e) => setName(e.target.value.trim())}
+            onChange={(e) => setName(e.target.value)}
           />
         </label>
         <label htmlFor="lastname">
@@ -113,7 +158,7 @@ export default function StudentEdit(props) {
             type="text"
             placeholder="Student Last Name"
             value={lastname}
-            onChange={(e) => setLastname(e.target.value.trim())}
+            onChange={(e) => setLastname(e.target.value)}
           />
         </label>
         <label htmlFor="email">

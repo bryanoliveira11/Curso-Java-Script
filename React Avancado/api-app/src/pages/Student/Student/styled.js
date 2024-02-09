@@ -43,3 +43,5 @@ export const H1 = styled.h1`
 export const FaArrowBack = styled(FaArrowLeft)`
   margin-right: 5px;
 `;
+
+export const ProfilePicture = styled.div``;
