@@ -52,7 +52,9 @@ export default function Photos(props) {
     } catch (err) {
       setIsLoading(false);
       const status = get(err, 'response.status', 0);
-      toast.error('Error while Submiting the Image.');
+      toast.error(
+        'Error while Submiting the Image. Files Supported are : PNG & JPG.'
+      );
 
       if (status === 401) {
         dispatch(actions.loginFailure());
