@@ -1,12 +1,12 @@
 import React from 'react';
 import { get } from 'lodash';
-import { FaCheck } from 'react-icons/fa';
+import { FaCheck, FaUserCircle, FaEdit } from 'react-icons/fa';
 import { isEmail, isInt, isFloat } from 'validator';
 import { toast } from 'react-toastify';
 import { Link } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 import { Container } from '../../../styles/GlobalStyles';
-import { Form, H1, FaArrowBack } from './styled';
+import { Form, FaArrowBack, ProfilePicture, Title } from './styled';
 import axios from '../../../services/axios';
 import Loading from '../../../components/Loading';
 import history from '../../../services/history';
@@ -24,6 +24,7 @@ export default function StudentEdit(props) {
   const [age, setAge] = React.useState('');
   const [height, setHeight] = React.useState('');
   const [weight, setWeight] = React.useState('');
+  const [photo, setPhoto] = React.useState('');
   const [isLoading, setIsLoading] = React.useState(false);
 
   React.useEffect(() => {
@@ -43,7 +44,8 @@ export default function StudentEdit(props) {
           setAge(studentData.data.age);
           setHeight(studentData.data.height);
           setWeight(studentData.data.weight);
-          // const Photo = get(studentData, 'Photos[0].url', '');
+          const Photo = get(studentData.data, 'Photos[0].url', '');
+          setPhoto(Photo);
         }
       } catch (err) {
         toast.error('Student not Found');
@@ -136,11 +138,21 @@ export default function StudentEdit(props) {
 
   return (
     <Container>
-      <H1>{studentId ? `Student Edit - ${name}` : 'New Student'}</H1>
-      <Link to="/">
-        <FaArrowBack size={15} />
-        Go Back
-      </Link>
+      <Title>
+        <h1>{studentId ? `Student Edit` : 'New Student'}</h1>
+        <Link to="/">
+          <FaArrowBack size={15} />
+          Go Back
+        </Link>
+      </Title>
+      {studentId && (
+        <ProfilePicture>
+          {photo ? <img src={photo} alt={name} /> : <FaUserCircle size={180} />}
+          <Link to={`/photos/${studentId}`}>
+            <FaEdit size={24} />
+          </Link>
+        </ProfilePicture>
+      )}
       <Loading isLoading={isLoading} />
       <Form onSubmit={handleSubmit}>
         <label htmlFor="name">
