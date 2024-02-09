@@ -1,10 +1,22 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { get } from 'lodash';
-import { FaUserCircle, FaEdit, FaWindowClose, FaPlus } from 'react-icons/fa';
+import {
+  FaUserCircle,
+  FaEdit,
+  FaWindowClose,
+  FaPlus,
+  FaArrowCircleLeft,
+  FaArrowCircleRight,
+} from 'react-icons/fa';
 import axios from '../../services/axios';
 import { Container } from '../../styles/GlobalStyles';
-import { StudentContainer, ProfilePicture, NewStudent } from './styled';
+import {
+  StudentContainer,
+  ProfilePicture,
+  NewStudent,
+  Paginate,
+} from './styled';
 import Loading from '../../components/Loading';
 
 export default function Students() {
@@ -13,6 +25,8 @@ export default function Students() {
   */
   const [students, setStudents] = React.useState([]);
   const [isLoading, setIsLoading] = React.useState(false);
+  const [currentPage, setCurrentPage] = React.useState(0);
+  const studentsPerPage = 5;
 
   React.useEffect(() => {
     async function getStudents() {
@@ -24,6 +38,17 @@ export default function Students() {
     getStudents();
   }, []);
 
+  const indexOfLastStudent = (currentPage + 1) * studentsPerPage;
+  const indexOfFirstStudent = indexOfLastStudent - studentsPerPage;
+  const currentStudents = students.slice(
+    indexOfFirstStudent,
+    indexOfLastStudent
+  );
+
+  const handlePageClick = ({ selected }) => {
+    setCurrentPage(selected);
+  };
+
   return (
     <Container>
       <Loading isLoading={isLoading} />
@@ -33,7 +58,7 @@ export default function Students() {
         New Student
       </NewStudent>
       <StudentContainer>
-        {students.map((student) => (
+        {currentStudents.map((student) => (
           <div key={String(student.id)}>
             <ProfilePicture>
               {/* lodash get to get the first photo of the student array */}
@@ -55,6 +80,19 @@ export default function Students() {
           </div>
         ))}
       </StudentContainer>
+      <Paginate
+        previousLabel={<FaArrowCircleLeft size={22} className="arrow-left" />}
+        nextLabel={<FaArrowCircleRight size={22} className="arrow-right" />}
+        breakLabel="..."
+        breakClassName="break-me"
+        pageCount={Math.ceil(students.length / studentsPerPage)}
+        marginPagesDisplayed={2}
+        pageRangeDisplayed={5}
+        onPageChange={handlePageClick}
+        containerClassName="pagination"
+        activeClassName="active"
+        pageClassName="page-item"
+      />
     </Container>
   );
 }

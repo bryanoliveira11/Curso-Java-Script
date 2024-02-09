@@ -40,7 +40,7 @@ export default function StudentEdit(props) {
           setAge(studentData.data.age);
           setHeight(studentData.data.height);
           setWeight(studentData.data.weight);
-          const Photo = get(studentData, 'Photos[0].url', '');
+          // const Photo = get(studentData, 'Photos[0].url', '');
         }
       } catch (err) {
         toast.error('Student not Found');

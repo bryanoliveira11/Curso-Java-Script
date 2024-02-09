@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
+import ReactPaginate from 'react-paginate';
+import * as colors from '../../config/colors';
 
 export const StudentContainer = styled.div`
   margin-top: 20px;
@@ -29,5 +31,38 @@ export const NewStudent = styled(Link)`
 
   .fa-plus {
     margin-right: 5px;
+  }
+`;
+
+export const Paginate = styled(ReactPaginate)`
+  display: flex;
+  align-items: start;
+  margin-top: 25px;
+
+  li a {
+    cursor: pointer;
+  }
+
+  li.page-item a {
+    font-size: 18px;
+    margin: 0 5px 0 5px;
+    padding: 4px 5px 4px 5px;
+    border-radius: 4px;
+    color: #fff;
+    background: ${colors.primaryColor};
+    transition: all 200ms ease-in-out;
+
+    &:hover {
+      padding: 7px;
+    }
+  }
+
+  li.page-item.active a {
+    background: ${colors.primarColorDark};
+  }
+
+  .arrow-left,
+  .arrow-right {
+    margin: 0 10px 0 10px;
   }
 `;
