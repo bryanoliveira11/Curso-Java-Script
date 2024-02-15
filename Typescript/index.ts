@@ -1,1 +1,1 @@
-const nome = 'teste'  
+const nome = 'teste';
