@@ -1,4 +1,4 @@
-/* interfaces merging declaration */
+/* interfaces declaration merging */
 
 interface PersonMerge {
   name: string;
