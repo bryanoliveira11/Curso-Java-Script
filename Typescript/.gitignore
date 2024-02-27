@@ -2,6 +2,7 @@
 # Edit at https://www.toptal.com/developers/gitignore?templates=node
 
 frontend/assets/js
+frontend/assets/video
 
 ### Node ###
 # Logs
