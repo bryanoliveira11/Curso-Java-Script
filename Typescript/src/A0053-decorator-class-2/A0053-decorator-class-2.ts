@@ -1,4 +1,4 @@
-/* decorator class */
+/* decorator class - when the class decorator is called */
 
 function reverseNameAndColor<T extends new (...args: any[]) => any>(
   target: T,
