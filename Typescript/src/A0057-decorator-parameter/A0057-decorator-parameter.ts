@@ -1,18 +1,12 @@
-/* method decorator */
+/* parameter decorator */
 
-// can change the values with the return value
+// you can't change anything, you're only watching the values
 function decorator(
   classPrototype: unknown,
-  nameMethod: string,
-  descriptor: PropertyDescriptor,
-): PropertyDescriptor {
-  console.log(classPrototype, nameMethod, descriptor);
-  return {
-    // changing the descriptor
-    value: function (...args: string[]) {
-      return args[0].toUpperCase();
-    },
-  };
+  nameMethod: string | symbol,
+  index: number,
+): void {
+  console.log(classPrototype, nameMethod, index);
 }
 
 export class APerson {
@@ -26,8 +20,8 @@ export class APerson {
     this.age = age;
   }
 
-  @decorator
-  method(msg: string): string {
+  // decorating the parameter
+  method(@decorator msg: string): string {
     return `${this.name} ${this.lastname} : ${msg}`;
   }
 
