@@ -1,4 +1,5 @@
-# Commands
+b# Commands
 
-start jest config => npx ts-jest config:init
-execute tests => npx jest
+start jest config => npx ts-jest config:init </br>
+execute tests => npx jest </br>
+clear jest cache => npx jest --clearCache </br>
