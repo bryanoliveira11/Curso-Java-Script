@@ -1,5 +1,6 @@
-b# Commands
+# Commands
 
-start jest config => npx ts-jest config:init </br>
-execute tests => npx jest </br>
-clear jest cache => npx jest --clearCache </br>
+* Start Jest Config --> npx ts-jest config:init </br>
+* Execute Tests --> npx jest </br>
+* Clear Jest Cache --> npx jest --clearCache </br>
+* Generating Coverage Report --> npx jest --coverage
