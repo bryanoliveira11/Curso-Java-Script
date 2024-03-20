@@ -1,7 +1,12 @@
-import { Discount } from './discount';
+import {
+  Discount,
+  FiftyPercentDiscount,
+  NoDiscount,
+  TenPercentDiscount,
+} from './discount';
 
-const createSut = () => {
-  return new Discount();
+const createSut = (className: new () => Discount) => {
+  return new className();
 };
 
 describe('Product', () => {
@@ -9,9 +14,18 @@ describe('Product', () => {
     jest.clearAllMocks();
   });
 
-  it('should return undefined', () => {
-    const sut = createSut('product-test', 9.9);
-    expect(sut).toHaveProperty('name', 'product-test');
-    expect(sut.price).toBeCloseTo(9.9);
+  it('should have no discount', () => {
+    const sut = createSut(NoDiscount);
+    expect(sut.calculate(10.9)).toBeCloseTo(10.9);
+  });
+
+  it('should apply 50% discount on price', () => {
+    const sut = createSut(FiftyPercentDiscount);
+    expect(sut.calculate(150.5)).toBeCloseTo(75.25);
+  });
+
+  it('should apply 10% discount on price', () => {
+    const sut = createSut(TenPercentDiscount);
+    expect(sut.calculate(10)).toBeCloseTo(9);
   });
 });
