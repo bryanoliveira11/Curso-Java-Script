@@ -8,7 +8,7 @@ function App() {
         pomodoroTime={1500}
         shortRestTime={300}
         longRestTime={900}
-        cycles={4}
+        cyclesQtdManager={4}
       />
     </div>
   );
