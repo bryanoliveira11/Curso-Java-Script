@@ -1,0 +1,15 @@
+version: '3.1'
+
+services:
+  app_strapi_api:
+    container_name: app_strapi_api
+    hostname: app_strapi_api
+    image: postgres
+    restart: always
+    environment:
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: app-strapi-api
+      PGDATA: /var/lib/postgresql/data/pgdata
+    ports:
+      - 5432:5432
+
