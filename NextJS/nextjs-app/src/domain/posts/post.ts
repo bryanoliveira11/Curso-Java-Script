@@ -86,4 +86,5 @@ export type PostAttributesData = {
 export type PostData = {
   id: PostID;
   attributes: PostAttributesData;
+  data: PostAttributesData;
 };
