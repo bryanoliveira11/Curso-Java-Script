@@ -2,7 +2,8 @@ import { POSTS_URL } from '@/src/config/app-config';
 import { PostData } from '@/src/domain/posts/post';
 import { fetchJson } from '@/src/utils/fetch-json';
 
-export async function getAllPosts(): Promise<PostData[]> {
-  const posts = await fetchJson<PostData[]>(POSTS_URL);
+export async function getAllPosts(query = ''): Promise<PostData[]> {
+  const url = `${POSTS_URL}&${query}`;
+  const posts = await fetchJson<PostData[]>(url);
   return posts;
 }
