@@ -3,6 +3,7 @@ import { PostContainer } from './styled';
 import { Header } from '@/src/components/Header';
 import { MainContainer } from '@/src/components/MainContainer';
 import { PostCard } from '@/src/components/PostCard';
+import { Footer } from '@/src/components/Footer';
 
 export type HomePageProps = {
   posts: PostData[];
@@ -26,6 +27,7 @@ export default function HomePage({ posts }: HomePageProps) {
           ))}
         </PostContainer>
       </MainContainer>
+      <Footer />
     </>
   );
 }
