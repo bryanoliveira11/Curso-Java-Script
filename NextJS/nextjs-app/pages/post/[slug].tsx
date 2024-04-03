@@ -9,7 +9,18 @@ export type DynamicPostProps = {
 };
 
 export default function DynamicPost({ post }: DynamicPostProps) {
-  return <p>{post.attributes.title}</p>;
+  const contentText = post.attributes.content
+    .map(
+      (block: { type: string; children: { type: string; text: string }[] }) =>
+        block.children.map((child) => child.text).join(''),
+    )
+    .join('\n');
+
+  return (
+    <>
+      <p dangerouslySetInnerHTML={{ __html: contentText }} />
+    </>
+  );
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -20,6 +31,7 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: posts.map((post) => {
+      console.log(post);
       return {
         params: {
           slug: post.attributes.slug,
