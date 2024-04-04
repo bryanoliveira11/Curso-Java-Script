@@ -1,3 +1,4 @@
+import { Post } from '@/src/containers/Post';
 import { countAllPosts } from '@/src/data/posts/count-posts';
 import { getAllPosts } from '@/src/data/posts/get-all-posts';
 import { getPost } from '@/src/data/posts/get-post';
@@ -9,18 +10,7 @@ export type DynamicPostProps = {
 };
 
 export default function DynamicPost({ post }: DynamicPostProps) {
-  const contentText = post.attributes.content
-    .map(
-      (block: { type: string; children: { type: string; text: string }[] }) =>
-        block.children.map((child) => child.text).join(''),
-    )
-    .join('\n');
-
-  return (
-    <>
-      <p dangerouslySetInnerHTML={{ __html: contentText }} />
-    </>
-  );
+  return <Post post={post} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -31,7 +21,6 @@ export const getStaticPaths: GetStaticPaths = async () => {
 
   return {
     paths: posts.map((post) => {
-      console.log(post);
       return {
         params: {
           slug: post.attributes.slug,
