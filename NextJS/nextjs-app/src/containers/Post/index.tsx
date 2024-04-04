@@ -1,4 +1,5 @@
 import { Header } from '@/src/components/Header';
+import { Heading } from '@/src/components/Heading';
 import { MainContainer } from '@/src/components/MainContainer';
 import { PostData } from '@/src/domain/posts/post';
 
@@ -18,7 +19,7 @@ export const Post = ({ post }: PostProps) => {
     <>
       <Header />
       <MainContainer>
-        <h2>{post.attributes.title}</h2>
+        <Heading>{post.attributes.title}</Heading>
         <div dangerouslySetInnerHTML={{ __html: contentText }} />
       </MainContainer>
     </>
