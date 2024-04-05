@@ -1,6 +1,7 @@
 import { Header } from '@/src/components/Header';
 import { Heading } from '@/src/components/Heading';
 import { MainContainer } from '@/src/components/MainContainer';
+import { PostContainer } from '@/src/components/PostContainer';
 import { PostCover } from '@/src/components/PostCover';
 import { PostDetails } from '@/src/components/PostDetails';
 import { PostData } from '@/src/domain/posts/post';
@@ -10,7 +11,7 @@ export type PostProps = {
 };
 
 export const Post = ({ post }: PostProps) => {
-  const contentText: PostProps = post.attributes.content
+  const contentText: string = post.attributes.content
     .map(
       (block: { type: string; children: { type: string; text: string }[] }) =>
         block.children.map((child) => child.text).join(''),
@@ -31,7 +32,7 @@ export const Post = ({ post }: PostProps) => {
           category={post.attributes.category.data.attributes.name}
           date={post.attributes.createdAt}
         />
-        <div dangerouslySetInnerHTML={{ __html: contentText }} />
+        <PostContainer content={contentText} />
       </MainContainer>
     </>
   );
