@@ -1,5 +1,5 @@
 import { PostData } from '@/src/domain/posts/post';
-import { PostContainer } from './styled';
+import { PostContainer, Category } from './styled';
 import { Header } from '@/src/components/Header';
 import { MainContainer } from '@/src/components/MainContainer';
 import { PostCard } from '@/src/components/PostCard';
@@ -9,9 +9,10 @@ import { SITE_NAME } from '@/src/config/app-config';
 
 export type HomePageProps = {
   posts: PostData[];
+  category?: string;
 };
 
-export default function HomePage({ posts }: HomePageProps) {
+export default function HomePage({ posts, category }: HomePageProps) {
   return (
     <>
       <Head>
@@ -19,6 +20,7 @@ export default function HomePage({ posts }: HomePageProps) {
         <meta name="description" content="next js project site" />
       </Head>
       <Header />
+      {category && <Category>Category: {category}</Category>}
       <MainContainer>
         <PostContainer>
           {posts.map((post) => (

@@ -6,4 +6,8 @@ export const Container = styled.div`
     margin: ${theme.spacings.medium} 0;
     font-style: italic;
   `}
+
+  a {
+    margin-left: 0.5rem;
+  }
 `;

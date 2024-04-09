@@ -1,4 +1,4 @@
-import { Comments } from '@/src/Comments';
+import { Comments } from '@/src/components/Comments';
 import { Header } from '@/src/components/Header';
 import { Heading } from '@/src/components/Heading';
 import { MainContainer } from '@/src/components/MainContainer';
