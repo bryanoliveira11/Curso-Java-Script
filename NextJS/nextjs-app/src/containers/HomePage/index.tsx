@@ -23,7 +23,10 @@ export default function HomePage({
   return (
     <>
       <Head>
-        <title>{category ? `${category} - ${SITE_NAME}` : SITE_NAME}</title>
+        <title>
+          {category ? `${category} - ${SITE_NAME}` : SITE_NAME}
+          {pagination?.nextPage && ` - Page ${pagination.nextPage - 1}`}
+        </title>
         <meta name="description" content="next js project site" />
       </Head>
       <Header />
