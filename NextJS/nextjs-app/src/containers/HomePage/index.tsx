@@ -6,13 +6,20 @@ import { PostCard } from '@/src/components/PostCard';
 import { Footer } from '@/src/components/Footer';
 import Head from 'next/head';
 import { SITE_NAME } from '@/src/config/app-config';
+import { PaginationData } from '@/src/domain/posts/pagination';
+import { Pagination } from '@/src/components/Pagination';
 
 export type HomePageProps = {
   posts: PostData[];
   category?: string;
+  pagination?: PaginationData;
 };
 
-export default function HomePage({ posts, category }: HomePageProps) {
+export default function HomePage({
+  posts,
+  category,
+  pagination,
+}: HomePageProps) {
   return (
     <>
       <Head>
@@ -34,6 +41,7 @@ export default function HomePage({ posts, category }: HomePageProps) {
             />
           ))}
         </PostContainer>
+        <Pagination {...pagination} />
       </MainContainer>
       <Footer />
     </>

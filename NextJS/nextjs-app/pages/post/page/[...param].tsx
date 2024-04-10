@@ -4,7 +4,6 @@ import { getAllPosts } from '@/src/data/posts/get-all-posts';
 import HomePage from '@/src/containers/HomePage';
 import { useRouter } from 'next/router';
 import { PaginationData } from '@/src/domain/posts/pagination';
-import { countAllPosts } from '@/src/data/posts/count-posts';
 
 export type PageProps = {
   posts: PostData[];
@@ -18,7 +17,7 @@ export default function Page({ posts, pagination, category }: PageProps) {
   if (router.isFallback) return <div>Loading...</div>;
   if (!posts.length) return <div>Page not Found</div>;
 
-  return <HomePage posts={posts} />;
+  return <HomePage posts={posts} pagination={pagination} category={category} />;
 }
 
 export const getStaticPaths: GetStaticPaths = async () => {
@@ -50,7 +49,7 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
   const urlQuery = `sort=id:desc&pagination[start]=${startFrom}&pagination[limit]=${postsPerPage}${categoryQuery}`;
   const posts = await getAllPosts(urlQuery);
 
-  const numberOfPosts = Number(await countAllPosts(categoryQuery));
+  const numberOfPosts = Number(posts.length);
 
   const pagination: PaginationData = {
     nextPage,
@@ -59,8 +58,6 @@ export const getStaticProps: GetStaticProps = async (ctx) => {
     postsPerPage,
     category,
   };
-
-  console.log(urlQuery);
 
   return {
     props: { posts, pagination, category },
