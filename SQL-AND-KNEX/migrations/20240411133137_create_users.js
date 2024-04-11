@@ -10,6 +10,7 @@ exports.up = function(knex) {
     table.string('email', 255).notNullable().unique();
     table.decimal('salary', 15, 2).notNullable();
     table.string('password_hash', 255).notNullable().unique();
+    table.timestamps(true, true);
   })
 };
 
