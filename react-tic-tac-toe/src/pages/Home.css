@@ -25,3 +25,8 @@
   display: block;
   padding-bottom: 100%;
 }
+
+.player {
+  text-align: center;
+  padding: 20px 0;
+}
