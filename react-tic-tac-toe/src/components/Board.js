@@ -4,6 +4,7 @@ import Square from './Square';
 import Player from './Player';
 import Reset from './Reset';
 import Winner from './Winner';
+import History from './History';
 import calculateWinner from '../utils/calculateWinner';
 import { v4 as uuidv4 } from 'uuid';
 
@@ -25,6 +26,7 @@ export default function Board() {
           <Square key={uuidv4()} value={value} index={index} />
         ))}
       </div>
+      <History />
     </div>
   );
 }
