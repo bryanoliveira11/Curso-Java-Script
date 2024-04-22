@@ -3,10 +3,12 @@ import PropTypes from 'prop-types';
 import { GameContext } from '../contexts/GameContext';
 
 export default function Square({ value, index }) {
-  const { squares, setSquares, isXNext, setisXNext } = useContext(GameContext);
+  const { squares, setSquares, isXNext, setisXNext, playerWinner } =
+    useContext(GameContext);
 
   function handleClick() {
     if (squares[index]) return;
+    if (playerWinner) return;
 
     const newSquares = [...squares];
     newSquares[index] = isXNext ? 'X' : 'O';
