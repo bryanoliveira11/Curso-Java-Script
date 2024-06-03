@@ -1,9 +1,8 @@
-import './styles.css'
+import { Card } from '../../components/Card'
+import './styles.css' 
 
-function App() {
+export function App() {
   return (
-    <h1>oi</h1> 
+    <Card back='🐸'/> 
   )
 }
-
-export default App
