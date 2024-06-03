@@ -1,8 +1,11 @@
-import { Card } from '../../components/Card'
-import './styles.css' 
+import { Grid } from "../../components/Grid";
+import { cards } from "../../data/cards";
+import "./styles.css";
 
 export function App() {
   return (
-    <Card back='🐸' id='1'/> 
-  )
+    <div className="app">
+      <Grid cards={cards} />
+    </div>
+  );
 }

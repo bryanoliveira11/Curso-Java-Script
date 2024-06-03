@@ -11,3 +11,9 @@ body {
     #2b5876
   ); /* W3C, IE 10+/ Edge, Firefox 16+, Chrome 26+, Opera 12+, Safari 7+ */
 }
+
+.app {
+  max-width: 640px;
+  min-width: 320px;
+  margin: 0 auto;
+}
