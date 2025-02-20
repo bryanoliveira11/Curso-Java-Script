@@ -1,4 +1,7 @@
 import ConditionalRender from "./components/ConditionalRender";
+import Events from "./components/Events";
+import EventsWithList from "./components/EventsWithList";
+import EventsWithObject from "./components/EventsWithObject";
 import Footer from "./components/Footer";
 import Header from "./components/Header";
 import MainContent from "./components/MainContent";
@@ -11,7 +14,7 @@ import Variables from "./components/Variables";
 const App = () => {
   return (
     <div>
-      <Header />
+      {/* <Header />
       <MainContent />
       <Variables />
       <Objects />
@@ -21,8 +24,11 @@ const App = () => {
         <p>children</p>
       </PropsChildren>
       <ConditionalRender isLoggedIn={true} />
-      <StylesIcons/>
-      <Footer />
+      <StylesIcons/> */}
+      <Events />
+      <EventsWithList />
+      <EventsWithObject />
+      {/* <Footer /> */}
     </div>
   );
 };
