@@ -1,0 +1,13 @@
+.icon-card {
+    width: 300px;
+    height: 100px;
+    background-color: #f0f0f0;
+    box-shadow: 0px 2px 3px 1px #2525253a;
+    border-radius: 3px;
+    display: flex;
+}
+
+.icon {
+    font-size: 50px;
+    padding: 20px;
+}
