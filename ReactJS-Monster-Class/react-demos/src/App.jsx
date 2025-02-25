@@ -11,6 +11,8 @@ import Props from "./components/Props";
 import PropsChildren from "./components/PropsChildren";
 import StylesIcons from "./components/Styles&Icons";
 import Effect from "./components/useEffect";
+import Reducer from "./components/useReducer";
+import Ref from "./components/useRef";
 import Variables from "./components/Variables";
 import { createContext } from "react";
 
@@ -38,11 +40,13 @@ const App = () => {
       <EventsWithList />
       <EventsWithObject /> */}
       {/* <Effect /> */}
-      <Data.Provider value={context}>
+      {/* <Data.Provider value={context}>
         <Data2.Provider value={context2}>
           <ContextApi_A />
         </Data2.Provider>
-      </Data.Provider>
+      </Data.Provider> */}
+      {/* <Reducer /> */}
+      <Ref/>
       {/* <Footer /> */}
     </div>
   );
