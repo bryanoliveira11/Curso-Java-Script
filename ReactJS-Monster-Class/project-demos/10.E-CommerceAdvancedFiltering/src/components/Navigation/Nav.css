@@ -23,8 +23,8 @@ input {
   width: 1.5rem;
   height: 1.5rem;
   margin-left: 2rem;
-  color: #444;
-  transition: scale 300ms ease-in-out;
+  color: #2c2c2c;
+  transition: scale 150ms ease-in-out;
 }
 
 .nav-icons:hover {

@@ -27,7 +27,7 @@ export default function Products() {
                 <del>$300</del> $200
               </div>
               <div className="bag">
-                <BsFillBagHeartFill className=""/>
+                <BsFillBagHeartFill className="bag-icon"/>
               </div>
             </section>
           </div>
