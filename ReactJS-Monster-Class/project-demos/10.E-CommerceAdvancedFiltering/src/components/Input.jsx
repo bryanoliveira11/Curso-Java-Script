@@ -1,9 +1,12 @@
-import React from 'react'
+import React from "react";
 
-export default function Input() {
+export default function Input({title}) {
   return (
-    <div>
-      
-    </div>
-  )
+    <>
+      <label className="sidebar-label-container">
+        <input type="radio" name="test" />
+        <span className="checkmark"></span>{title}
+      </label>
+    </>
+  );
 }
