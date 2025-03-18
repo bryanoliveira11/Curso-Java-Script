@@ -1,9 +1,11 @@
 import { useState } from "react";
 import Nav from "./components/Navigation/Nav";
+import Card from "./components/Card";
 import Products from "./components/Products/Products";
 import Recommended from "./components/Recommended/Recommended";
 import Sidebar from "./components/Sidebar/Sidebar";
 import data from "./db/data";
+import "./index.css";
 
 function App() {
   // input filter
@@ -47,29 +49,27 @@ function App() {
       );
     }
 
-    return filteredItems.map(
-      ({ img, title, star, reviews, prevPrice, newPrice }) => (
+    return filteredItems.map(({ img, title, reviews, prevPrice, newPrice }) => (
+      <div className="card" key={Math.random()}>
         <Card
-          key={Math.random()}
           img={img}
           title={title}
-          star={star}
           reviews={reviews}
           prevPrice={prevPrice}
           newPrice={newPrice}
         />
-      )
-    );
+      </div>
+    ));
   }
 
   const result = filteredData(data, selectedCategory, query);
 
   return (
     <>
-      <Sidebar handleChange={handleChange}/>
-      <Nav />
-      <Recommended />
-      <Products />
+      <Sidebar handleChange={handleChange} />
+      <Nav query={query} handleInputChange={handleInputChange} />
+      <Recommended handleClick={handleClick} />
+      <Products data={result} />
     </>
   );
 }

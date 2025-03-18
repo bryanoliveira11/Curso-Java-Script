@@ -63,6 +63,10 @@
   background: #eee;
 }
 
+.sidebar-label-container .checkmark.white::after {
+  background: #000;
+}
+
 .line {
   margin-top: 3rem;
   border-color: #f7f7f7;

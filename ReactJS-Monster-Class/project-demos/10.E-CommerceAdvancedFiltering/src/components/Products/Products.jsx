@@ -1,19 +1,9 @@
 import "./Products.css";
-import data from "../../db/data";
-import Card from "../Card";
 
-export default function Products() {
-  const items = data.map((item) => {
-    return (
-      <section className="card" key={Math.random()}>
-        <Card item={item} />
-      </section>
-    );
-  });
-
+export default function Products({data}) {
   return (
     <>
-      <section className="card-container">{items}</section>
+      <section className="card-container">{data}</section>
     </>
   );
 }

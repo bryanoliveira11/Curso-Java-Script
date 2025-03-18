@@ -1,9 +1,9 @@
-import React from 'react'
+import React from "react";
 
-export default function Button() {
+export default function Button({ handleClick, title, value }) {
   return (
-    <div>
-      
-    </div>
-  )
+    <button onClick={handleClick} value={value} className="btns">
+      {title}
+    </button>
+  );
 }

@@ -10,10 +10,34 @@ export default function Colors({ handleChange }) {
         <input type="radio" onChange={handleChange} value="" name="test3" />
         <span className="checkmark all"></span>All
       </label>
-      <Input name="test3" value="black" title="Black" />
-      <Input name="test3" value="blue" title="Blue" />
-      <Input name="test3" value="red" title="Red" />
-      <Input name="test3" value="green" title="Green" />
+      <Input
+        handleChange={handleChange}
+        name="test3"
+        color="black"
+        value="black"
+        title="Black"
+      />
+      <Input
+        handleChange={handleChange}
+        name="test3"
+        color="blue"
+        value="blue"
+        title="Blue"
+      />
+      <Input
+        handleChange={handleChange}
+        name="test3"
+        color="red"
+        value="red"
+        title="Red"
+      />
+      <Input
+        handleChange={handleChange}
+        name="test3"
+        color="green"
+        value="green"
+        title="Green"
+      />
       <label className="sidebar-label-container">
         <input
           type="radio"
@@ -22,7 +46,7 @@ export default function Colors({ handleChange }) {
           name="test3"
         />
         <span
-          className="checkmark"
+          className="checkmark white"
           style={{ background: "white", border: "2px solid black" }}
         ></span>
         White
