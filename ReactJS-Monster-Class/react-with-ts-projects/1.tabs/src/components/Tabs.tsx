@@ -4,6 +4,7 @@ import { GoProjectSymlink } from "react-icons/go";
 import { SiCoursera } from "react-icons/si";
 import Card from "./Card";
 import Contact from "./Contact";
+import About from "./About";
 
 const tabs = [
   {
@@ -17,7 +18,7 @@ const tabs = [
             key={index}
             title="Amazing Card"
             description="This is a cool-looking card component using React and Tailwind CSS."
-            image="https://via.placeholder.com/400x300"
+            image="https://picsum.photos/400/300"
           />
         ))}
       </div>
@@ -40,7 +41,7 @@ const tabs = [
             key={index}
             title="Amazing Card"
             description="This is a cool-looking card component using React and Tailwind CSS."
-            image="https://via.placeholder.com/400x300"
+            image="https://picsum.photos/400/300"
           />
         ))}
       </div>
@@ -57,7 +58,7 @@ const tabs = [
             key={index}
             title="Amazing Card"
             description="This is a cool-looking card component using React and Tailwind CSS."
-            image="https://via.placeholder.com/400x300"
+            image="https://picsum.photos/400/300"
           />
         ))}
       </div>
@@ -81,7 +82,7 @@ const Tabs = () => {
           <button
             key={tab.id}
             className={`flex-1 text-center py-2 px-4 font-medium text-sm ${
-              activeTab === tab.id ? "border-b-2 " : "text-gray-600"
+              activeTab === tab.id ? "border-b-2" : "text-gray-600"
             }`}
             onClick={() => setActiveTab(tab.id)}
           >

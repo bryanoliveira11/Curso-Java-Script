@@ -4,11 +4,11 @@ import Tabs from "./Tabs";
 
 export default function Profile() {
   const [bannerUrl, setBannerUrl] = React.useState(
-    "https://placehold.co/1500x400"
+    "https://picsum.photos/1500/400"
   );
 
   const [profileUrl, setProfileUrl] = React.useState(
-    "https://placehold.co/100"
+    "https://picsum.photos/100"
   );
 
   const handleBannerChange = (event: any) => {
