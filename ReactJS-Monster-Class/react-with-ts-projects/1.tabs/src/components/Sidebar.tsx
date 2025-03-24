@@ -1,4 +1,3 @@
-import React from "react";
 import { FaHome, FaSearch, FaUser } from "react-icons/fa";
 import { IoMdSettings } from "react-icons/io";
 

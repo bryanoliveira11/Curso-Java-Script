@@ -2,9 +2,9 @@ import { useState } from "react";
 import { FaHome, FaInfoCircle, FaPhone } from "react-icons/fa";
 import { GoProjectSymlink } from "react-icons/go";
 import { SiCoursera } from "react-icons/si";
+import About from "./About";
 import Card from "./Card";
 import Contact from "./Contact";
-import About from "./About";
 
 const tabs = [
   {
@@ -19,6 +19,7 @@ const tabs = [
             title="Amazing Card"
             description="This is a cool-looking card component using React and Tailwind CSS."
             image="https://picsum.photos/400/300"
+            link=""
           />
         ))}
       </div>
@@ -42,6 +43,7 @@ const tabs = [
             title="Amazing Card"
             description="This is a cool-looking card component using React and Tailwind CSS."
             image="https://picsum.photos/400/300"
+            link=""
           />
         ))}
       </div>
@@ -59,6 +61,7 @@ const tabs = [
             title="Amazing Card"
             description="This is a cool-looking card component using React and Tailwind CSS."
             image="https://picsum.photos/400/300"
+            link=""
           />
         ))}
       </div>
