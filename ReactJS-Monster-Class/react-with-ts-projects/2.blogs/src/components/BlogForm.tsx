@@ -3,18 +3,20 @@ import { useBlogs } from "../shared/Context";
 import { Blog } from "../types";
 
 interface BlogFormProps {
-  existingBlog?: Blog;
+  existingBlog?: Blog | null;
   onClose: () => void;
 }
 
-const BlogForm: React.FC<BlogFormProps> = ({ existingBlog, onClose }) => {
+export default function BlogForm({ existingBlog, onClose }: BlogFormProps) {
   const { addBlog, updateBlog } = useBlogs();
   const [title, setTitle] = React.useState(existingBlog?.title || "");
   const [description, setDescription] = React.useState(
     existingBlog?.description || ""
   );
   const [image, setImage] = React.useState(existingBlog?.image || "");
-  const [time, setTime] = React.useState(existingBlog?.time || "");
+  const [time, setTime] = React.useState(
+    existingBlog?.time || new Date().toLocaleString()
+  );
 
   React.useEffect(() => {
     if (existingBlog) {
@@ -39,7 +41,6 @@ const BlogForm: React.FC<BlogFormProps> = ({ existingBlog, onClose }) => {
     } else {
       addBlog(blog);
     }
-
     onClose();
   };
 
@@ -94,6 +95,4 @@ const BlogForm: React.FC<BlogFormProps> = ({ existingBlog, onClose }) => {
       </div>
     </div>
   );
-};
-
-export default BlogForm;
+}
