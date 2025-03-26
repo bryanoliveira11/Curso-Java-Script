@@ -7,18 +7,76 @@ import { BsThreeDots } from "react-icons/bs";
 const Table = () => {
   const [projects, setProjects] = React.useState(data);
   const [dropdownVisible, setDropdownVisible] = React.useState(false);
+  const [sortConfig, setSortConfig] = React.useState<{
+    key: string;
+    direction: string;
+  } | null>(null);
+
+  const sortProjects = (key: keyof (typeof data)[0]) => {
+    const sortedProjects = [...projects];
+
+    if (
+      sortConfig &&
+      sortConfig.key === key &&
+      sortConfig.direction === "asc"
+    ) {
+      sortedProjects.sort((a, b) => (a[key] > b[key] ? -1 : 1));
+      setSortConfig({ key, direction: "desc" });
+    } else {
+      sortedProjects.sort((a, b) => (a[key] > b[key] ? 1 : -1));
+      setSortConfig({ key, direction: "asc" });
+    }
+
+    setProjects(sortedProjects);
+  };
+
+  const handleSortOption = (option: keyof (typeof data)[0]) => {
+    sortProjects(option);
+    setDropdownVisible(false);
+  };
 
   return (
     <div className="py-4 w-[93%] ml-[5rem]">
-      <div className="flex items-center mb-5">
-        <button
-          onClick={() => setDropdownVisible(!dropdownVisible)}
-          className="border border-gray-700 flex items-center
+      <div className="relative">
+        <div className="flex items-center mb-5">
+          <button
+            onClick={() => setDropdownVisible(!dropdownVisible)}
+            className="border border-gray-700 flex items-center
             justify-center text-white p-2 rounded cursor-pointer"
-        >
-          <BiSort className="mr-[0.3rem]" /> Sort
-          <AiOutlineDown className="ml-2" />
-        </button>
+          >
+            <BiSort className="mr-[0.3rem]" /> Sort
+            <AiOutlineDown className="ml-2" />
+          </button>
+
+          {dropdownVisible && (
+            <div
+              className="absolute top-full left-0 mt-2 bg-gray-800
+            border-gray-700 shadow-lg"
+            >
+              <button
+                className="block px-4 py-2 text-white w-full
+            hover:bg-gray-700 cursor-pointer"
+                onClick={() => handleSortOption("client")}
+              >
+                Client
+              </button>
+              <button
+                className="block px-4 py-2 text-white w-full
+            hover:bg-gray-700 cursor-pointer"
+                onClick={() => handleSortOption("country")}
+              >
+                Country
+              </button>
+              <button
+                className="block px-4 py-2 text-white w-full
+            hover:bg-gray-700 cursor-pointer"
+                onClick={() => handleSortOption("date")}
+              >
+                Date
+              </button>
+            </div>
+          )}
+        </div>
       </div>
 
       <table
@@ -50,7 +108,7 @@ const Table = () => {
                 />
               </td>
               <td className="px-4 py-2">{project.client}</td>
-              <td className="px-4 py-2">{project.client}</td>
+              <td className="px-4 py-2">{project.country}</td>
               <td className="px-4 py-2">{project.email}</td>
               <td className="px-4 py-2">{project.project}</td>
               <td className="px-4 py-2">
