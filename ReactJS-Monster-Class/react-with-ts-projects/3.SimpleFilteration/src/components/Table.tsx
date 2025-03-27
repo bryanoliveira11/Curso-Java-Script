@@ -76,6 +76,19 @@ const Table = () => {
         project.status.toLowerCase().includes(filters.status.toLowerCase()))
   );
 
+  // pagination
+
+  const [currentPage, setCurrentPage] = React.useState(1);
+  const perPage = 8;
+  const startIndex = (currentPage - 1) * perPage;
+  const currentProjects = filteredProjects.slice(
+    startIndex,
+    startIndex + perPage
+  );
+  const totalPages = Math.ceil(filteredProjects.length / perPage);
+
+  const handlePageChange = (page: number) => setCurrentPage(page);
+
   return (
     <div className="py-4 w-[93%] ml-[5rem]">
       <div className="flex relative items-center mb-5">
@@ -138,7 +151,7 @@ const Table = () => {
                   type="text"
                   name="name"
                   value={filters.name}
-                  onClick={handleFilterChange}
+                  onChange={handleFilterChange}
                   className="bg-gray-900 text-white rounded
                     p-2 w-full mt-2 focus:outline-none"
                 />
@@ -151,7 +164,7 @@ const Table = () => {
                   type="text"
                   name="country"
                   value={filters.country}
-                  onClick={handleFilterChange}
+                  onChange={handleFilterChange}
                   className="bg-gray-900 text-white rounded
                     p-2 w-full mt-2 focus:outline-none"
                 />
@@ -164,7 +177,7 @@ const Table = () => {
                   type="text"
                   name="email"
                   value={filters.email}
-                  onClick={handleFilterChange}
+                  onChange={handleFilterChange}
                   className="bg-gray-900 text-white rounded
                     p-2 w-full mt-2 focus:outline-none"
                 />
@@ -177,7 +190,7 @@ const Table = () => {
                   type="text"
                   name="project"
                   value={filters.project}
-                  onClick={handleFilterChange}
+                  onChange={handleFilterChange}
                   className="bg-gray-900 text-white rounded
                     p-2 w-full mt-2 focus:outline-none"
                 />
@@ -190,7 +203,7 @@ const Table = () => {
                   type="text"
                   name="status"
                   value={filters.status}
-                  onClick={handleFilterChange}
+                  onChange={handleFilterChange}
                   className="bg-gray-900 text-white rounded
                     p-2 w-full mt-2 focus:outline-none"
                 />
@@ -219,7 +232,7 @@ const Table = () => {
         </thead>
 
         <tbody>
-          {projects.map((project, index) => (
+          {currentProjects.map((project, index) => (
             <tr className="border border-gray-700" key={index}>
               <td className="px-4 py-2">
                 <img
@@ -252,15 +265,21 @@ const Table = () => {
       </table>
       <div className="flex justify-end mt-4">
         <button
+          disabled={currentPage === 1}
+          onClick={() => handlePageChange(currentPage - 1)}
           className="px-4 py-2 bg-gray-700 text-white rounded mr-2
-        disabled:opacity-50"
+        disabled:opacity-50 disabled:cursor-default cursor-pointer"
         >
           Previous
         </button>
-        <span className="px-4 py-2 text-white">Page 1 of 4</span>
+        <span className="px-4 py-2 text-white">
+          Page {currentPage} of {totalPages}
+        </span>
         <button
+          disabled={currentPage === totalPages}
+          onClick={() => handlePageChange(currentPage + 1)}
           className="px-4 py-2 bg-gray-700 text-white rounded mr-2
-        disabled:opacity-50"
+        disabled:opacity-50 disabled:cursor-default cursor-pointer"
         >
           Next
         </button>

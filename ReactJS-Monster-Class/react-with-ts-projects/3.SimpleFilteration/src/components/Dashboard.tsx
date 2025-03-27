@@ -5,7 +5,7 @@ export default function Dashboard() {
   return (
     <div className="flex">
       <Sidebar />
-      <div className="flex-1 bg-gray-900">
+      <div className="flex-1 bg-gray-900 h-screen">
         <Table />
       </div>
     </div>
