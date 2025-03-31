@@ -41,18 +41,18 @@ export default function Sidebar() {
       <section>
         <input
           type="text"
-          className="border-2 rounded px-2 sm:mb-0"
+          className="border-2 rounded px-2 sm:mb-0 focus:outline-0"
           placeholder="Search Product"
         />
         <div className="flex justify-center items-center">
           <input
             type="text"
-            className="border-2 mr-2 px-5 py-3 mb-3 w-full"
+            className="border-2 mr-2 px-5 py-3 mb-3 w-full focus:outline-0"
             placeholder="Min"
           />
           <input
             type="text"
-            className="border-2 mr-2 px-5 py-3 mb-3 w-full"
+            className="border-2 mr-2 px-5 py-3 mb-3 w-full focus:outline-0"
             placeholder="Max"
           />
         </div>
