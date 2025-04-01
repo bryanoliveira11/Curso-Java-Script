@@ -1,5 +1,6 @@
 import React from "react";
 import { useFilter } from "./FilterContext";
+import { RxReset } from "react-icons/rx";
 
 interface Product {
   category: string;
@@ -74,8 +75,8 @@ export default function Sidebar() {
   };
 
   return (
-    <div className="w-64 p-5 h-screen">
-      <h1 className="text-2xl font-bold mb-10 mt-4">React Store</h1>
+    <div className="w-64 p-5 h-screen shadow-lg">
+      <h1 className="text-2xl font-bold mb-10 mt-4 text-center">React Store</h1>
 
       <section>
         <label className="input">
@@ -161,7 +162,7 @@ export default function Sidebar() {
           className="btn btn-neutral w-full cursor-pointer"
           onClick={handleResetFilters}
         >
-          Reset Filters
+          Reset Filters <RxReset size={20}/>
         </button>
       </section>
     </div>
