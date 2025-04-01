@@ -130,7 +130,7 @@ export default function Sidebar() {
                 <input
                   type="radio"
                   name="radio-3"
-                  className="radio mr-3"
+                  className="radio radio-neutral mr-3"
                   value={category}
                   onChange={() => handleCategoryChange(category)}
                   checked={selectedCategory === category}
