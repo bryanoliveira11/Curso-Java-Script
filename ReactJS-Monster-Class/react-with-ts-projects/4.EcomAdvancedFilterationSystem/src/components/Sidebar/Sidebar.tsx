@@ -59,10 +59,12 @@ export default function Sidebar() {
   };
 
   const handleCategoryChange = (category: string) => {
+    setKeyword("");
     setSelectedCategory(category);
   };
 
   const handleKeyword = (keyword: string) => {
+    setSelectedCategory("");
     setKeyword(keyword);
   };
 
@@ -162,7 +164,7 @@ export default function Sidebar() {
           className="btn btn-neutral w-full cursor-pointer"
           onClick={handleResetFilters}
         >
-          Reset Filters <RxReset size={20}/>
+          Reset Filters <RxReset size={20} />
         </button>
       </section>
     </div>

@@ -3,6 +3,7 @@ import { useFilter } from "../Sidebar/FilterContext";
 import { BsFillFilterCircleFill } from "react-icons/bs";
 import axios from "axios";
 import { Product } from "./Product";
+import ProductCard from "./ProductCard";
 
 export default function MainContent() {
   const { searchQuery, selectedCategory, minPrice, maxPrice, keyword } =
@@ -68,7 +69,7 @@ export default function MainContent() {
     }
   };
 
-  getFilteredProducts();
+  const filteredProducts = getFilteredProducts();
 
   return (
     <section className="xl:w-[55rem] lg:w-[55rem] sm:w-[40rem] xs:w-[20rem] p-5">
@@ -109,8 +110,12 @@ export default function MainContent() {
 
         <div
           className="grid grid-cols-4 sm:grid-cols-3 md:grid-cols-4
-        gap-5 "
-        ></div>
+        gap-5 mt-4"
+        >
+          {filteredProducts.map((product) => (
+            <ProductCard key={product.id} product={product}/>
+          ))}
+        </div>
       </div>
     </section>
   );
