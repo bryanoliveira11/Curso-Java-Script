@@ -71,6 +71,35 @@ export default function MainContent() {
 
   const filteredProducts = getFilteredProducts();
 
+  const totalProducts = 100;
+  const totalPages = Math.ceil(totalProducts / itemsPerPage);
+
+  const handlePageChange = (page: number) => {
+    if (page > 0 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
+  const getPaginationButtons = () => {
+    const buttons: number[] = [];
+    let startPage = Math.max(1, currentPage - 2);
+    let endPage = Math.min(totalPages, currentPage + 2);
+
+    if (currentPage - 2 < 1) {
+      endPage = Math.min(totalPages, endPage + (2 - currentPage - 1));
+    }
+
+    if (currentPage + 2 > totalPages) {
+      startPage = Math.min(1, startPage - (2 - totalPages - currentPage));
+    }
+
+    for (let page = startPage; page <= endPage; page++) {
+      buttons.push(page);
+    }
+
+    return buttons;
+  };
+
   return (
     <section className="xl:w-[55rem] lg:w-[55rem] sm:w-[40rem] xs:w-[20rem] p-5">
       <div className="mb-5">
@@ -113,8 +142,36 @@ export default function MainContent() {
         gap-5 mt-4"
         >
           {filteredProducts.map((product) => (
-            <ProductCard key={product.id} product={product}/>
+            <ProductCard key={product.id} product={product} />
           ))}
+        </div>
+
+        <div className="join mt-3">
+          <button
+            className="join-item btn disabled:hidden"
+            disabled={currentPage === 1}
+            onClick={() => handlePageChange(currentPage - 1)}
+          >
+            «
+          </button>
+          {getPaginationButtons().map((page) => (
+            <button
+              className={`join-item btn ${
+                page === currentPage ? "btn-neutral" : ""
+              }`}
+              key={page}
+              onClick={() => handlePageChange(page)}
+            >
+              {page}
+            </button>
+          ))}
+          <button
+            className="join-item btn disabled:hidden"
+            disabled={currentPage === totalPages}
+            onClick={() => handlePageChange(currentPage + 1)}
+          >
+            »
+          </button>
         </div>
       </div>
     </section>

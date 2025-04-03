@@ -7,7 +7,7 @@ interface ProductCardProps {
 
 export default function ProductCard({ product }: ProductCardProps) {
   return (
-    <div className="p-4 rounded shadow-md">
+    <div className="p-4 rounded shadow-md border border-gray-200">
       <Link to={`/product/${product.id}`}>
         <img
           src={product.thumbnail}
