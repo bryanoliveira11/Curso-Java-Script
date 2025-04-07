@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export default function TransitionProps() {
+export default function Transitions() {
   return (
     <div>
       <motion.div

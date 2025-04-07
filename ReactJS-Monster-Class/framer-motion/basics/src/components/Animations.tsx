@@ -1,6 +1,6 @@
 import { motion } from "framer-motion";
 
-export default function AnimateProps() {
+export default function Animations() {
   return (
     <div>
       <motion.div

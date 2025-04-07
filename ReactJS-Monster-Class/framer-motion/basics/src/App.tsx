@@ -1,11 +1,14 @@
-import AnimateProps from "./components/AnimateProps";
-import TransitionProps from "./components/TransitionProps";
+// import Animations from "./components/Animations";
+// import Transitions from "./components/Transitions";
+
+import Keyframes from "./components/Keyframes";
 
 function App() {
   return (
     <div>
-      {/* <AnimateProps/> */}
-      <TransitionProps/>
+      {/* <Animations/> */}
+      {/* <Transitions/> */}
+      <Keyframes/>
     </div>
   );
 }
