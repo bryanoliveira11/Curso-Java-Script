@@ -3,8 +3,12 @@
 // import PulsingButton from "./examples/PulsingButton";
 // import Keyframes from "./components/Keyframes";
 
-import BouncingLoader from "./examples/BouncingLoader";
+import FlippingCard from "./examples/FlippingCard";
 
+// import Variants from "./components/Variants";
+<FlippingCard />;
+
+// import BouncingLoader from "./examples/BouncingLoader";
 
 function App() {
   return (
@@ -13,7 +17,9 @@ function App() {
       {/* <Transitions/> */}
       {/* <Keyframes/> */}
       {/* <PulsingButton/> */}
-      <BouncingLoader/>
+      {/* <BouncingLoader/> */}
+      {/* <Variants/> */}
+      <FlippingCard />
     </div>
   );
 }
