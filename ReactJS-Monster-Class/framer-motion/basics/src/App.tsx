@@ -3,10 +3,15 @@
 // import PulsingButton from "./examples/PulsingButton";
 // import Keyframes from "./components/Keyframes";
 
-import FlippingCard from "./examples/FlippingCard";
+import ImageGallery from "./examples/ImageGallery";
+
+// import AnimatedCard from "./examples/AnimatedCard";
+
+// import Gestures from "./components/Gestures";
+
+// import FlippingCard from "./examples/FlippingCard";
 
 // import Variants from "./components/Variants";
-<FlippingCard />;
 
 // import BouncingLoader from "./examples/BouncingLoader";
 
@@ -19,7 +24,10 @@ function App() {
       {/* <PulsingButton/> */}
       {/* <BouncingLoader/> */}
       {/* <Variants/> */}
-      <FlippingCard />
+      {/* <FlippingCard /> */}
+      {/* <Gestures/> */}
+      {/* <AnimatedCard/> */}
+      <ImageGallery/>
     </div>
   );
 }
