@@ -1,9 +1,10 @@
 // import Animations from "./components/Animations";
 // import Transitions from "./components/Transitions";
-
-import PulsingButton from "./examples/PulsingButton";
-
+// import PulsingButton from "./examples/PulsingButton";
 // import Keyframes from "./components/Keyframes";
+
+import BouncingLoader from "./examples/BouncingLoader";
+
 
 function App() {
   return (
@@ -11,7 +12,8 @@ function App() {
       {/* <Animations/> */}
       {/* <Transitions/> */}
       {/* <Keyframes/> */}
-      <PulsingButton/>
+      {/* <PulsingButton/> */}
+      <BouncingLoader/>
     </div>
   );
 }
