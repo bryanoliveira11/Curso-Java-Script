@@ -10,9 +10,24 @@ body {
   height: 100vh;
 }
 
-.box {
+.box, .box2 {
   width: 300px;
   height: 300px;
   border-radius: 50%;
   background: yellow;
+}
+
+.box2 {
+  width: 150px;
+  height: 150px;
+  background: #ffffff33;
+  background-color: yellow;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: #fff;
+  font-size: 24px;
+  text-align: center;
 }

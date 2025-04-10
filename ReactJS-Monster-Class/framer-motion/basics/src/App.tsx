@@ -3,7 +3,11 @@
 // import PulsingButton from "./examples/PulsingButton";
 // import Keyframes from "./components/Keyframes";
 
-import AnimatedShape from "./examples/AnimatedShape";
+import AnimatedGallery from "./examples/AnimatedGallery";
+
+// import StaggerAnimation from "./components/StaggerAnimations";
+
+// import AnimatedShape from "./examples/AnimatedShape";
 
 // import ImageGallery from "./examples/ImageGallery";
 
@@ -30,7 +34,9 @@ function App() {
       {/* <Gestures/> */}
       {/* <AnimatedCard/> */}
       {/* <ImageGallery/> */}
-      <AnimatedShape/>
+      {/* <AnimatedShape/> */}
+      {/* <StaggerAnimation /> */}
+      <AnimatedGallery />
     </div>
   );
 }
