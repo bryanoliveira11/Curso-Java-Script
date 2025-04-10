@@ -3,7 +3,9 @@
 // import PulsingButton from "./examples/PulsingButton";
 // import Keyframes from "./components/Keyframes";
 
-import ImageGallery from "./examples/ImageGallery";
+import AnimatedShape from "./examples/AnimatedShape";
+
+// import ImageGallery from "./examples/ImageGallery";
 
 // import AnimatedCard from "./examples/AnimatedCard";
 
@@ -27,7 +29,8 @@ function App() {
       {/* <FlippingCard /> */}
       {/* <Gestures/> */}
       {/* <AnimatedCard/> */}
-      <ImageGallery/>
+      {/* <ImageGallery/> */}
+      <AnimatedShape/>
     </div>
   );
 }
