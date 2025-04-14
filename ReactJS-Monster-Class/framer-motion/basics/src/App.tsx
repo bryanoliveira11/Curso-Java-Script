@@ -3,7 +3,9 @@
 // import PulsingButton from "./examples/PulsingButton";
 // import Keyframes from "./components/Keyframes";
 
-import AnimatedGallery from "./examples/AnimatedGallery";
+import RangeSlider from "./examples/RangeSlider";
+
+// import AnimatedGallery from "./examples/AnimatedGallery";
 
 // import StaggerAnimation from "./components/StaggerAnimations";
 
@@ -21,6 +23,8 @@ import AnimatedGallery from "./examples/AnimatedGallery";
 
 // import BouncingLoader from "./examples/BouncingLoader";
 
+// import UseMotionVal from "./hooks/useMotionValue";
+
 function App() {
   return (
     <div>
@@ -36,7 +40,9 @@ function App() {
       {/* <ImageGallery/> */}
       {/* <AnimatedShape/> */}
       {/* <StaggerAnimation /> */}
-      <AnimatedGallery />
+      {/* <AnimatedGallery /> */}
+      {/* <UseMotionVal />  */}
+      <RangeSlider/>
     </div>
   );
 }
