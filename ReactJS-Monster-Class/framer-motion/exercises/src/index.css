@@ -1,0 +1,18 @@
+@import "tailwindcss";
+@import "daisyui";
+
+body {
+  background-color: rgb(42, 40, 49);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+}
+
+.box,
+.box2 {
+  width: 300px;
+  height: 300px;
+  border-radius: 50%;
+  background: yellow;
+}
