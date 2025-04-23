@@ -3,7 +3,13 @@
 // import SkewRectangle from "./components/SkewRectangle";
 // import SpinningIcon from "./components/SpinningIcon";
 
-import Modal from "./components/Modal";
+import ToastNotification from "./components/ToastNotification";
+
+// import Accordion from "./components/Accordion";
+
+// import ResponsiveButton from "./components/ResponsiveButton";
+
+// import Modal from "./components/Modal";
 
 // import SidebarAnimated from "./components/SidebarAnimated";
 
@@ -24,7 +30,10 @@ function App() {
       {/* <SequentialBoxes/> */}
       {/* <FadeComponent/> */}
       {/* <SidebarAnimated/> */}
-      <Modal />
+      {/* <Modal /> */}
+      {/* <ResponsiveButton/> */}
+      {/* <Accordion /> */}
+      <ToastNotification message="Lorem ipsum dolor sit, amet consectetur adipisicing elit. Ducimus nostrum, minus ex nihil" />
     </>
   );
 }
