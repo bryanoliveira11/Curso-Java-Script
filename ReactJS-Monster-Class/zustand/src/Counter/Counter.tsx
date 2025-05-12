@@ -1,4 +1,4 @@
-import { useCounter } from "../store";
+import { useCounter } from "./store";
 import Decrement from "./Decrement";
 import Increment from "./Increment";
 

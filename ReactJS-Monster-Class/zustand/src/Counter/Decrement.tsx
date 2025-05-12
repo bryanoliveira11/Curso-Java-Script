@@ -1,4 +1,4 @@
-import { useCounter } from "../store";
+import { useCounter } from "./store";
 
 export default function Decrement() {
   const {decrement} = useCounter();
