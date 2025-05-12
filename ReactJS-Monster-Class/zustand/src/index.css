@@ -1,8 +1,8 @@
 @import "tailwindcss";
 @plugin "daisyui";
 
-body {
+/* body {
   top: 40%;
   left: 50%;
   position: absolute;
-}
+} */
