@@ -1,12 +1,15 @@
 // import Counter from "./Counter/Counter";
 
-import RecipeApp from "./RecipesApp/RecipeApp";
+import ExpenseTracker from "./ExpenseTrackerApp/ExpenseTracker";
+
+// import RecipeApp from "./RecipesApp/RecipeApp";
 
 export default function App() {
   return (
     <div>
       {/* <Counter /> */}
-      <RecipeApp/>
+      {/* <RecipeApp/> */}
+      <ExpenseTracker/>
     </div>
   );
 }
