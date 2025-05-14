@@ -1,6 +1,8 @@
 // import Counter from "./Counter/Counter";
 
-import PassGen from "./PasswordGeneratorApp/PassGen";
+import Meals from "./MealsApp/Meals";
+
+// import PassGen from "./PasswordGeneratorApp/PassGen";
 
 // import ExpenseTracker from "./ExpenseTrackerApp/ExpenseTracker";
 
@@ -12,7 +14,8 @@ export default function App() {
       {/* <Counter /> */}
       {/* <RecipeApp/> */}
       {/* <ExpenseTracker/> */}
-      <PassGen/>
+      {/* <PassGen/> */}
+      <Meals/>
     </div>
   );
 }
